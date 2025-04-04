@@ -71,7 +71,7 @@
 			ClientSize = new Size(800, 450);
 			Controls.Add(tabControl1);
 			Name = "TabView";
-			Text = "Form1";
+			Text = "Affärssystem2000";
 			Load += TabView_Load;
 			tabControl1.ResumeLayout(false);
 			ResumeLayout(false);

@@ -15,7 +15,7 @@ namespace CS_Labb4_Affar
 			lagerUI.Dock = DockStyle.Fill;
 			KassaTab.Controls.Add(kassaUI);
 			LagerTab.Controls.Add(lagerUI);
-			lagerController.ListenerAttach(lagerUI);
+			lagerController.LagerListenerAttach(lagerUI);
 		}
 
 		private void TabView_Load(object sender, EventArgs e) {

@@ -35,7 +35,7 @@
 			// 
 			// AddMovieRuntimeTextBox
 			// 
-			AddMovieRuntimeTextBox.Location = new Point(66, 90);
+			AddMovieRuntimeTextBox.Location = new Point(66, 91);
 			AddMovieRuntimeTextBox.Name = "AddMovieRuntimeTextBox";
 			AddMovieRuntimeTextBox.Size = new Size(127, 23);
 			AddMovieRuntimeTextBox.TabIndex = 10;
@@ -51,7 +51,7 @@
 			// 
 			// AddMovieFormatTextBox
 			// 
-			AddMovieFormatTextBox.Location = new Point(66, 61);
+			AddMovieFormatTextBox.Location = new Point(66, 62);
 			AddMovieFormatTextBox.Name = "AddMovieFormatTextBox";
 			AddMovieFormatTextBox.Size = new Size(127, 23);
 			AddMovieFormatTextBox.TabIndex = 11;
@@ -67,7 +67,7 @@
 			// 
 			// AddMoviePriceTextBox
 			// 
-			AddMoviePriceTextBox.Location = new Point(66, 32);
+			AddMoviePriceTextBox.Location = new Point(66, 33);
 			AddMoviePriceTextBox.Name = "AddMoviePriceTextBox";
 			AddMoviePriceTextBox.Size = new Size(127, 23);
 			AddMoviePriceTextBox.TabIndex = 12;
@@ -83,7 +83,7 @@
 			// 
 			// AddMovieNameTextBox
 			// 
-			AddMovieNameTextBox.Location = new Point(66, 3);
+			AddMovieNameTextBox.Location = new Point(66, 4);
 			AddMovieNameTextBox.Name = "AddMovieNameTextBox";
 			AddMovieNameTextBox.Size = new Size(127, 23);
 			AddMovieNameTextBox.TabIndex = 13;
@@ -110,7 +110,7 @@
 			Controls.Add(AddMovieNameTextBox);
 			Controls.Add(label1);
 			Name = "AddMovie";
-			Size = new Size(197, 120);
+			Size = new Size(197, 118);
 			ResumeLayout(false);
 			PerformLayout();
 		}

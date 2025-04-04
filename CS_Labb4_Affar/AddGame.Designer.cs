@@ -33,7 +33,7 @@
 			// 
 			// AddGamePlatformTextBox
 			// 
-			AddGamePlatformTextBox.Location = new Point(65, 61);
+			AddGamePlatformTextBox.Location = new Point(65, 62);
 			AddGamePlatformTextBox.Name = "AddGamePlatformTextBox";
 			AddGamePlatformTextBox.Size = new Size(127, 23);
 			AddGamePlatformTextBox.TabIndex = 11;
@@ -49,7 +49,7 @@
 			// 
 			// AddGamePriceTextBox
 			// 
-			AddGamePriceTextBox.Location = new Point(65, 32);
+			AddGamePriceTextBox.Location = new Point(65, 33);
 			AddGamePriceTextBox.Name = "AddGamePriceTextBox";
 			AddGamePriceTextBox.Size = new Size(127, 23);
 			AddGamePriceTextBox.TabIndex = 12;
@@ -65,7 +65,7 @@
 			// 
 			// AddGameNameTextBox
 			// 
-			AddGameNameTextBox.Location = new Point(65, 3);
+			AddGameNameTextBox.Location = new Point(65, 4);
 			AddGameNameTextBox.Name = "AddGameNameTextBox";
 			AddGameNameTextBox.Size = new Size(127, 23);
 			AddGameNameTextBox.TabIndex = 13;
@@ -90,7 +90,7 @@
 			Controls.Add(AddGameNameTextBox);
 			Controls.Add(label1);
 			Name = "AddGame";
-			Size = new Size(196, 90);
+			Size = new Size(196, 89);
 			ResumeLayout(false);
 			PerformLayout();
 		}

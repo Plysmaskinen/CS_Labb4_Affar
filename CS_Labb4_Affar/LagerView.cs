@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace CS_Labb4_Affar {
 	public partial class LagerView : UserControl {
 		LagerController LagerController;
+
 		public LagerView(LagerController lagerController) {
 			InitializeComponent();
 			LagerController = lagerController;
@@ -24,6 +25,7 @@ namespace CS_Labb4_Affar {
 
 		private void LagerAddProductButton_Click(object sender, EventArgs e) {
 			AddProductDialog addProductDialog = new AddProductDialog(LagerController);
+			LagerController.AddProdListenerAttach(addProductDialog);
 			addProductDialog.ShowDialog();
 		}
 

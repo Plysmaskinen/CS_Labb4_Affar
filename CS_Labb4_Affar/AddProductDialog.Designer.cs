@@ -58,8 +58,8 @@
 			// splitContainer1.Panel2
 			// 
 			splitContainer1.Panel2.Controls.Add(splitContainer2);
-			splitContainer1.Size = new Size(218, 311);
-			splitContainer1.SplitterDistance = 43;
+			splitContainer1.Size = new Size(218, 246);
+			splitContainer1.SplitterDistance = 37;
 			splitContainer1.TabIndex = 0;
 			// 
 			// ProductTypeLabel
@@ -79,6 +79,7 @@
 			ProductTypeComboBox.Name = "ProductTypeComboBox";
 			ProductTypeComboBox.Size = new Size(121, 23);
 			ProductTypeComboBox.TabIndex = 2;
+			ProductTypeComboBox.SelectedIndexChanged += ProductTypeComboBox_SelectedIndexChanged;
 			// 
 			// splitContainer2
 			// 
@@ -90,8 +91,8 @@
 			// splitContainer2.Panel2
 			// 
 			splitContainer2.Panel2.Controls.Add(splitContainer3);
-			splitContainer2.Size = new Size(218, 264);
-			splitContainer2.SplitterDistance = 231;
+			splitContainer2.Size = new Size(218, 205);
+			splitContainer2.SplitterDistance = 176;
 			splitContainer2.TabIndex = 0;
 			// 
 			// splitContainer3
@@ -107,7 +108,7 @@
 			// splitContainer3.Panel2
 			// 
 			splitContainer3.Panel2.Controls.Add(AddProductAcceptButton);
-			splitContainer3.Size = new Size(218, 29);
+			splitContainer3.Size = new Size(218, 25);
 			splitContainer3.SplitterDistance = 99;
 			splitContainer3.TabIndex = 0;
 			// 
@@ -116,26 +117,28 @@
 			AddProductCancelButton.Dock = DockStyle.Fill;
 			AddProductCancelButton.Location = new Point(0, 0);
 			AddProductCancelButton.Name = "AddProductCancelButton";
-			AddProductCancelButton.Size = new Size(99, 29);
+			AddProductCancelButton.Size = new Size(99, 25);
 			AddProductCancelButton.TabIndex = 0;
 			AddProductCancelButton.Text = "Avbryt";
 			AddProductCancelButton.UseVisualStyleBackColor = true;
+			AddProductCancelButton.Click += AddProductCancelButton_Click;
 			// 
 			// AddProductAcceptButton
 			// 
 			AddProductAcceptButton.Dock = DockStyle.Fill;
 			AddProductAcceptButton.Location = new Point(0, 0);
 			AddProductAcceptButton.Name = "AddProductAcceptButton";
-			AddProductAcceptButton.Size = new Size(115, 29);
+			AddProductAcceptButton.Size = new Size(115, 25);
 			AddProductAcceptButton.TabIndex = 1;
 			AddProductAcceptButton.Text = "Lägg Till";
 			AddProductAcceptButton.UseVisualStyleBackColor = true;
+			AddProductAcceptButton.Click += AddProductAcceptButton_Click;
 			// 
 			// AddProductDialog
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(218, 311);
+			ClientSize = new Size(218, 246);
 			Controls.Add(splitContainer1);
 			MaximizeBox = false;
 			MinimizeBox = false;

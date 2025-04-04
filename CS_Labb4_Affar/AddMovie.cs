@@ -10,8 +10,18 @@ using System.Windows.Forms;
 
 namespace CS_Labb4_Affar {
 	public partial class AddMovie : UserControl {
-		public AddMovie() {
+		LagerController LagerController;
+		public AddMovie(LagerController lagerController) {
 			InitializeComponent();
+			LagerController = lagerController;
+		}
+		public List<string> getInfo() {
+			List<string> info = new List<string>() { "Book" };
+			var tb = this.Controls.OfType<TextBox>().OrderBy(i => i.TabIndex);
+			foreach (var text in tb) {
+				info.Add(text.Text.ToString());
+			}
+			return info;
 		}
 	}
 }

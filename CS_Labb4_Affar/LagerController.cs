@@ -32,10 +32,50 @@ namespace CS_Labb4_Affar {
 			ProductBindingSource.DataSource = new BindingList<ProductViewModel>(LVMs);
 		}
 
-		public void ListenerAttach(LagerView view) {
-
+		public void LagerListenerAttach(LagerView view) {
+			
 		}
 
+		public void AddProdListenerAttach(AddProductDialog view) {
+			view.ProductAdded += OnProductAdded;
+		}
+
+		private void OnProductAdded(object? sender, List<string> e) {
+			string type = e.First();
+			e.Remove(e.First());
+			switch (type) {
+				case "Book":	BuildBook(e); break;
+				case "Game":	BuildGame(e); break;
+				case "Movie":	BuildMovie(e); break;
+			}
+		}
+
+		private void BuildMovie(List<string> e) {
+			string name = e[0];
+			if (!int.TryParse(e[1], out int price)) return;
+			string format = e[2];
+			if (!int.TryParse(e[3], out int run)) return;
+			AddProduct(new Movie(0, name, price, 0, format, run));
+		}
+
+		private void BuildGame(List<string> e) {
+			string name = e[0];
+			if (!int.TryParse(e[1], out int price)) return;
+			string plat = e[2];
+			AddProduct(new Game(0, name, price, 0, plat));
+		}
+
+		private void BuildBook(List<string> e) {
+			MessageBox.Show(string.Join(", ", e));
+			MessageBox.Show("Book");
+			string name = e[0];
+			if (!int.TryParse(e[1], out int price)) return;
+			string auth = e[2];
+			string genre = e[3];
+			string format = e[4];
+			string lang = e[5];
+			AddProduct(new Book(0, name, price, 0, auth, genre, format, lang));
+		}
 
 		private void AddProduct(Product product) {
 			product.ID = nextID++;
