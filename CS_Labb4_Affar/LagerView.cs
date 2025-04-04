@@ -11,20 +11,11 @@ using System.Windows.Forms;
 namespace CS_Labb4_Affar {
 	public partial class LagerView : UserControl {
 		LagerController LagerController;
-		public event EventHandler<string> TypeSelected; 
 		public LagerView(LagerController lagerController) {
 			InitializeComponent();
 			LagerController = lagerController;
-			LagerDataGridView.DataSource = lagerController.productBindingSource;
-			LagerComboBox.SelectedIndex = 0;
-		}
-		private void LagerComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-			string selectedType;
-			if (LagerComboBox.SelectedIndex == 1) selectedType = "Book";
-			else if (LagerComboBox.SelectedIndex == 2) selectedType = "Game";
-			else if (LagerComboBox.SelectedIndex == 3) selectedType = "Movie";
-			else selectedType = "";
-			TypeSelected?.Invoke(this, selectedType);
+			LagerDataGridView.DataSource = lagerController.ProductBindingSource;
+
 		}
 
 		private void LagerHelpButton_Click(object sender, EventArgs e) {
@@ -32,12 +23,12 @@ namespace CS_Labb4_Affar {
 		}
 
 		private void LagerAddProductButton_Click(object sender, EventArgs e) {
-			AddProductDialog addProductDialog = new AddProductDialog();
+			AddProductDialog addProductDialog = new AddProductDialog(LagerController);
 			addProductDialog.ShowDialog();
 		}
 
 		private void LagerOrderProductsButton_Click(object sender, EventArgs e) {
-			OrderProductsDialog orderProductsDialog = new OrderProductsDialog();
+			OrderProductsDialog orderProductsDialog = new OrderProductsDialog(LagerController);
 			orderProductsDialog.ShowDialog();
 		}
 

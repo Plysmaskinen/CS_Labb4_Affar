@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace CS_Labb4_Affar {
 	public partial class OrderProductsDialog : Form {
-		public OrderProductsDialog() {
+		LagerController LagerController;
+		public OrderProductsDialog(LagerController lagerController) {
 			InitializeComponent();
+			LagerController = lagerController;
 		}
 	}
 }

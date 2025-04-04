@@ -74,6 +74,7 @@
 			// ProductTypeComboBox
 			// 
 			ProductTypeComboBox.FormattingEnabled = true;
+			ProductTypeComboBox.Items.AddRange(new object[] { "Bok", "Dataspel", "Film" });
 			ProductTypeComboBox.Location = new Point(89, 10);
 			ProductTypeComboBox.Name = "ProductTypeComboBox";
 			ProductTypeComboBox.Size = new Size(121, 23);

@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CS_Labb4_Affar {
 	public class LagerController {
 		int nextID = 0;
-		public BindingList<Product> productList { get; set; } = [];
-		public BindingSource productBindingSource { get; set; } = new BindingSource();
+		public BindingList<Product> ProductList { get; set; } = [];
+		public BindingSource ProductBindingSource { get; set; } = [];
 		public LagerController() {
-			productBindingSource.DataSource = productList;
-			
 			AddProduct(new Book(0, "Bello Gallico et Civili", 449, 0, "Julius Caesar", "Historia", "Inbunden", "Latin"));
 			AddProduct(new Book(0, "How to Read a Book", 149, 0, "Mortimer J. Adler", "Kursliteratur", "Pocket", ""));
 			AddProduct(new Book(0, "Moby Dick", 49, 0, "Herman Melville", "Äventyr", "Pocket", ""));
@@ -28,21 +27,19 @@ namespace CS_Labb4_Affar {
 			AddProduct(new Movie(0, "Konungens Återkomst", 199, 0, "Blu-Ray", 154));
 			AddProduct(new Movie(0, "Pulp Fiction", 199, 0, "Blu-Ray", 0));
 			AddProduct(new Movie(0, "Schindler's List", 99, 0, "DVD", 0));
+
+			var LVMs = ProductList.Select(p => new ProductViewModel(p)).ToList();
+			ProductBindingSource.DataSource = new BindingList<ProductViewModel>(LVMs);
 		}
 
 		public void ListenerAttach(LagerView view) {
-			view.TypeSelected += OnTypeSelected;
+
 		}
 
-		private void OnTypeSelected(object? sender, string e) {
-			if (e == "Book") MessageBox.Show("bok vald");
-			if (e == "Game") MessageBox.Show("spel vald");
-			if (e == "Movie") MessageBox.Show("film vald");
-		}
 
-		public void AddProduct(Product product) {
+		private void AddProduct(Product product) {
 			product.ID = nextID++;
-			productList.Add(product);
+			ProductList.Add(product);
 		}
 
 	}

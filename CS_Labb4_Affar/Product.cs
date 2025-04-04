@@ -6,21 +6,15 @@ using System.Threading.Tasks;
 
 namespace CS_Labb4_Affar {
 	public abstract class Product {
-		//public enum productType {
-		//	Book,
-		//	Game,
-		//	Movie
-		//}
+
 		public int ID			{ get; set; }
 		public string Name		{ get; private set; }
 		public int Price		{ get; private set; }
-		//public productType Type	{ get; private set; }
 		public int Amount		{ get; set; }
-		public Product(int id, string name, int price, /*productType type,*/ int amount) {
+		public Product(int id, string name, int price, int amount) {
 			ID = id;
 			Name = name;
 			Price = price;
-			//Type = type;
 			Amount = amount;
 		}
 

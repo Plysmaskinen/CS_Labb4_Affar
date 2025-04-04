@@ -25,8 +25,6 @@
 		private void InitializeComponent() {
 			LagerSplitPanel = new SplitContainer();
 			LagerDataGridView = new DataGridView();
-			label1 = new Label();
-			LagerComboBox = new ComboBox();
 			LagerOrderProductsButton = new Button();
 			LagerRemoveProductButton = new Button();
 			LagerAddProductButton = new Button();
@@ -53,8 +51,6 @@
 			// 
 			// LagerSplitPanel.Panel2
 			// 
-			LagerSplitPanel.Panel2.Controls.Add(label1);
-			LagerSplitPanel.Panel2.Controls.Add(LagerComboBox);
 			LagerSplitPanel.Panel2.Controls.Add(LagerOrderProductsButton);
 			LagerSplitPanel.Panel2.Controls.Add(LagerRemoveProductButton);
 			LagerSplitPanel.Panel2.Controls.Add(LagerAddProductButton);
@@ -72,26 +68,6 @@
 			LagerDataGridView.Name = "LagerDataGridView";
 			LagerDataGridView.Size = new Size(792, 396);
 			LagerDataGridView.TabIndex = 0;
-			// 
-			// label1
-			// 
-			label1.AutoSize = true;
-			label1.Location = new Point(430, 7);
-			label1.Name = "label1";
-			label1.Size = new Size(93, 15);
-			label1.TabIndex = 2;
-			label1.Text = "Kollapsa Till Typ:";
-			// 
-			// LagerComboBox
-			// 
-			LagerComboBox.Font = new Font("Segoe UI", 8F);
-			LagerComboBox.FormattingEnabled = true;
-			LagerComboBox.Items.AddRange(new object[] { "Kollapsa ej", "Böcker", "Dataspel", "Filmer" });
-			LagerComboBox.Location = new Point(529, 3);
-			LagerComboBox.Name = "LagerComboBox";
-			LagerComboBox.Size = new Size(121, 21);
-			LagerComboBox.TabIndex = 1;
-			LagerComboBox.SelectedIndexChanged += LagerComboBox_SelectedIndexChanged;
 			// 
 			// LagerOrderProductsButton
 			// 
@@ -144,7 +120,6 @@
 			Size = new Size(792, 422);
 			LagerSplitPanel.Panel1.ResumeLayout(false);
 			LagerSplitPanel.Panel2.ResumeLayout(false);
-			LagerSplitPanel.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)LagerSplitPanel).EndInit();
 			LagerSplitPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)LagerDataGridView).EndInit();
@@ -159,7 +134,5 @@
 		private Button LagerAddProductButton;
 		private Button LagerHelpButton;
 		private Button LagerOrderProductsButton;
-		private Label label1;
-		private ComboBox LagerComboBox;
 	}
 }
