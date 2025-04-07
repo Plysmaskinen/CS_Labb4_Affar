@@ -1,114 +1,248 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CS_Labb4_Affar.Models;
+using static System.Reflection.Metadata.BlobBuilder;
 using static System.Windows.Forms.LinkLabel;
 
-namespace CS_Labb4_Affar.Controllers
-{
-    internal class DatabaseController
-    {
-        private List<Book> Books;
-        private List<Game> Games;
-        private List<Movie> Movies;
-        public DatabaseController() { }
+namespace CS_Labb4_Affar.Controllers {
+	public class DatabaseController {
+		int id;
+		LagerController LagerController;
+		public DatabaseController(LagerController lagerController) {
+			LagerController = lagerController;
+		}
 
-        public void InitDatabase()
-        {
+		public void DatabaseWriteListenerAttach(LagerView view) {
+			view.SaveToFile += WriteDatabase;
+		}
 
-        }
+		public void DatabaseReadListenerAttach(LagerView view) {
+			view.ReadFromFile += ReadDatabase;
+		}
 
-        public void WriteDatabase() 
-        { 
-        
-        }
+		public void ReadDatabase(object? sender, EventArgs e) {
+			//MessageBox.Show("Read");
+			//LagerController.BooksTable = ReadBooks();
+			ReadBooks();
+			//LagerController.GamesTable = ReadGames();
+			ReadGames();
+			//LagerController.MoviesTable = ReadMovies();
+			ReadMovies();
+			UpdateID();
+		}
 
-        private List<Book> ReadBooks()
-        {
-            var books = new List<Book>();
-            List<string> rows = ReadLinesFromCSV("books");
+		private void UpdateID() {
+			int booksID = 0;
+			int gamesID = 0;
+			int moviesID = 0;
+			List<int> IDs = [];
+			foreach (Book book in LagerController.BooksTable) {
+				booksID = booksID < book.ID ? book.ID : booksID;
+			}
+			foreach (Game game in LagerController.GamesTable) {
+				gamesID = gamesID < game.ID ? game.ID : gamesID;
+			}
+			foreach (Movie movie in LagerController.MoviesTable) {
+				moviesID = moviesID < movie.ID ? movie.ID : moviesID;
+			}
+			IDs.Add(booksID);
+			IDs.Add(gamesID);
+			IDs.Add(moviesID);
+			LagerController.nextID = IDs.Max()+1;
+		}
 
-            rows.ForEach(row =>
-            {
-                string[] columns = row.Split(',');
+		public void WriteDatabase(object? sender, EventArgs e) {
+			MessageBox.Show("Saved");
+			WriteBooks(LagerController.BooksTable);
+			WriteGames(LagerController.GamesTable);
+			WriteMovies(LagerController.MoviesTable);
+		}
 
-            });
+		//private BindingList<Book> ReadBooks() {
+		//	var books = new BindingList<Book>();
+		//	List<string> rows = ReadLinesFromCSV("books");
 
-            return Books;
-        }
+		//	foreach (string row in rows) {
+		//		string[] columns = row.Split(',');
+		//		Book book = new Book(
+		//			int.Parse(columns[0]),
+		//			columns[1],
+		//			int.Parse(columns[2]),
+		//			int.Parse(columns[3]),
+		//			columns[4],
+		//			columns[5],
+		//			columns[6],
+		//			columns[7]
+		//			);
+		//		books.Add(book);
+		//		LagerController.AddBook(book);
+		//	}
+		//	return books;
+		//}
+		private void ReadBooks() {
+			List<string> rows = ReadLinesFromCSV("books");
 
-        private void WriteBooks(List<Book> Books) { }
-        private void ReadGames() { }
-        private void WriteGames() { }
-        private void ReadMovies() { }
-        private void WriteMovies() { }
+			foreach (string row in rows) {
+				string[] columns = row.Split(',');
+				Book book = new Book(
+					int.Parse(columns[0]),
+					columns[1],
+					int.Parse(columns[2]),
+					int.Parse(columns[3]),
+					columns[4],
+					columns[5],
+					columns[6],
+					columns[7]
+				);
+				LagerController.AddBook(book);
+			}
+		}
 
-        private DataTable readCSVToDataTable()
-        {
-            DataTable dt = new DataTable();
+		//private BindingList<Game> ReadGames() {
+		//	var games = new BindingList<Game>();
+		//	List<string> rows = ReadLinesFromCSV("games");
 
-            try
-            {
-                // Read all lines from the CSV
-                string[] books = File.ReadAllLines("CSVDatabase\\books.csv");
-                string[] games = File.ReadAllLines("CSVDatabase\\games.csv");
-                string[] movies = File.ReadAllLines("CSVDatabase\\movies.csv");
+		//	foreach (string row in rows) {
+		//		string[] columns = row.Split(',');
+		//		Game game = new Game(
+		//			int.Parse(columns[0]),
+		//			columns[1],
+		//			int.Parse(columns[2]),
+		//			int.Parse(columns[3]),
+		//			columns[4]
+		//		);
+		//		games.Add(game);
+		//		LagerController.AddGame(game);
+		//	}
+		//	return games;
+		//}
 
-                if (lines.Length > 0)
-                {
-                    // Split the first line (column headers) and create columns in the DataTable
-                    string[] columns = lines[0].Split(',');
+		private void ReadGames() {
+			List<string> rows = ReadLinesFromCSV("games");
 
-                    foreach (string column in columns)
-                    {
-                        dt.Columns.Add(column);
-                    }
+			foreach (string row in rows) {
+				string[] columns = row.Split(',');
+				Game game = new Game(
+					int.Parse(columns[0]),
+					columns[1],
+					int.Parse(columns[2]),
+					int.Parse(columns[3]),
+					columns[4]
+				);
+				LagerController.AddGame(game);
+			}
+		}
 
-                    // Read the rest of the lines for data
-                    for (int i = 1; i < lines.Length; i++)
-                    {
-                        string[] row = lines[i].Split(',');
-                        dt.Rows.Add(row);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error reading CSV: " + ex.Message);
-            }
+		//private BindingList<Movie> ReadMovies() {
+		//	var movies = new BindingList<Movie>();
+		//	List<string> rows = ReadLinesFromCSV("movies");
 
-            return dt;
-        }
+		//	foreach (string row in rows) {
+		//		string[] columns = row.Split(',');
+		//		Movie movie = new Movie(
+		//			int.Parse(columns[0]),
+		//			columns[1],
+		//			int.Parse(columns[2]),
+		//			int.Parse(columns[3]),
+		//			columns[4],
+		//			int.Parse(columns[3])
+		//		);
+		//		movies.Add(movie);
+		//		LagerController.AddMovie(movie);
+		//	}
+		//	return movies;
+		//}
 
-        private List<string> ReadLinesFromCSV(String FileName)
-        {
-            try
-            {
+		private void ReadMovies() {
+			List<string> rows = ReadLinesFromCSV("movies");
 
-                string[] rows = File.ReadAllLines("CSVDatabase\\" + FileName + ".csv");
+			foreach (string row in rows) {
+				string[] columns = row.Split(',');
+				Movie movie = new Movie(
+					int.Parse(columns[0]),
+					columns[1],
+					int.Parse(columns[2]),
+					int.Parse(columns[3]),
+					columns[4],
+					int.Parse(columns[3])
+				);
+				LagerController.AddMovie(movie);
+			}
+		}
 
-                if (rows.Length > 1)
-                {
-                    var rowList = rows.ToList();
+		private void WriteBooks(BindingList<Book> Books) {
+			if (Books.Count > 0)
+				MessageBox.Show("Books ej tom");
+			var lines = new List<string> {
+				GetHeader(typeof(Book))
+			};
+			foreach (Book book in Books) {
+				lines.Add(book.ToString());
+			}
+			WriteLinesToCSV("books", lines);
+		}
 
-                    // Remove header row
-                    rowList.RemoveAt(0);
+		private void WriteGames(BindingList<Game> Games) {
+			if (Games.Count > 0)
+				MessageBox.Show("games ej tom");
+			var lines = new List<string> {
+				GetHeader(typeof(Game))
+			};
+			foreach (Game game in Games) {
+				lines.Add(game.ToString());
+			}
+			WriteLinesToCSV("games", lines);
+		}
 
-                    return rowList;
-                }
+		private void WriteMovies(BindingList<Movie> Movies) {
+			if (Movies.Count > 0)
+				MessageBox.Show("Movies ej tom");
+			var lines = new List<string> {
+				GetHeader(typeof(Movie))
+			};
+			foreach (Movie movie in Movies) {
+				lines.Add(movie.ToString());
+			}
+			WriteLinesToCSV("movies", lines);
+		}
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error reading CSV: " + ex.Message);
-            }
+		private List<string> ReadLinesFromCSV(string fileName) {
+			try {
+				string[] rows = File.ReadAllLines(@"..\..\..\CSVDatabase\" + fileName + ".csv");
+				if (rows.Length > 1) {
+					var rowList = rows.ToList();
+					rowList.RemoveAt(0); //ta bort första raden med kolumntitlar
+					return rowList;
+				}
+			}
+			catch (Exception ex) {
+				MessageBox.Show("Error under läsningen av CSV: " + ex.Message);
+			}
 
-            return new List<string>();
-        }
+			return new List<string>();
+		}
 
-    }
+		public void WriteLinesToCSV(string fileName, List<string> lines) {
+			try {
+				File.WriteAllLines(@"..\..\..\CSVDatabase\" + fileName + ".csv", lines);
+			}
+			catch (Exception ex) {
+				MessageBox.Show("Error under skrivningen till CSV: " + ex.Message);
+			}
+		}
+
+		private string GetHeader(Type type) {
+			List<string> colNames = type.GetProperties().Select(p => p.Name).ToList();
+			while(colNames.First() != "ID") {
+				colNames = colNames.Skip(1).Concat(colNames.Take(1)).ToList();
+			}
+			return string.Join(",", colNames);
+		}
+	}
 }

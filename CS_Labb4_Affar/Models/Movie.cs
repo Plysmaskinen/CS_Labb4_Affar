@@ -13,5 +13,8 @@ namespace CS_Labb4_Affar.Models {
 			Format = format;
 			Runtime = runtime;
 		}
+		public override string ToString() {
+			return $"{ID},{Name},{Price},{Amount},{Format},{Runtime}";
+		}
 	}
 }

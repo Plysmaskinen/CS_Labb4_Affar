@@ -18,8 +18,6 @@ namespace CS_Labb4_Affar.Models {
 			Amount = amount;
 		}
 
-		public override string ToString() {
-			return $"{Amount}st. {Name}, {Price,-1}";
-		}
+		public abstract override string ToString();
 	}
 }

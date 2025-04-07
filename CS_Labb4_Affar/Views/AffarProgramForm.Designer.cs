@@ -64,15 +64,15 @@
 			LagerTab.Text = "Lager";
 			LagerTab.UseVisualStyleBackColor = true;
 			// 
-			// TabView
+			// AffarProgramForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(800, 450);
 			Controls.Add(tabControl1);
-			Name = "TabView";
+			Name = "AffarProgramForm";
 			Text = "Affärssystem2000";
-			Load += TabView_Load;
+			Load += AffarProgramForm_Load;
 			tabControl1.ResumeLayout(false);
 			ResumeLayout(false);
 		}

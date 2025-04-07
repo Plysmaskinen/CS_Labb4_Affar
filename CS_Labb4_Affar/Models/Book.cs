@@ -19,5 +19,9 @@ namespace CS_Labb4_Affar.Models {
 			Format = format;
 			Lang = lang;
 		}
+
+		public override string ToString() {
+			return $"{ID},{Name},{Price},{Amount},{Author},{Genre},{Format},{Lang}";
+		}
 	}
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,21 +14,23 @@ namespace CS_Labb4_Affar {
     public partial class LagerView : UserControl
     {
         LagerController LagerController;
+		public event EventHandler? SaveToFile;
+		public event EventHandler? ReadFromFile;
 
-        public LagerView(LagerController lagerController)
+		public LagerView(LagerController lagerController) {
+			InitializeComponent();
+			LagerController = lagerController;
+
+			BookTable.DataSource = lagerController.BooksTable;
+			GameTable.DataSource = lagerController.GamesTable;
+			MovieTable.DataSource = lagerController.MoviesTable;
+
+		}
+
+		private void LagerHelpButton_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-            LagerController = lagerController;
-            //LagerDataGridView.DataSource = lagerController.ProductBindingSource;
-
-
-            LagerDataGridView.DataSource =
-        }
-
-        private void LagerHelpButton_Click(object sender, EventArgs e)
-        {
-
-        }
+			Save();
+		}
 
         private void LagerAddProductButton_Click(object sender, EventArgs e)
         {
@@ -44,7 +47,15 @@ namespace CS_Labb4_Affar {
 
         private void LagerDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            //LagerDataGridView.Sort(LagerDataGridView.Columns[4], ListSortDirection.Ascending);
-        }
-    }
+
+		}
+
+		public void Save() {
+			SaveToFile?.Invoke(this, EventArgs.Empty);
+		}
+
+		public void Load() {
+			ReadFromFile?.Invoke(this, EventArgs.Empty);
+		}
+	}
 }
