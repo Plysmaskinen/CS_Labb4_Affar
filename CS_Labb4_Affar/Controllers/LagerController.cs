@@ -27,9 +27,7 @@ namespace CS_Labb4_Affar {
 			AddProduct(new Movie(0, "Konungens Återkomst", 199, 0, "Blu-Ray", 154));
 			AddProduct(new Movie(0, "Pulp Fiction", 199, 0, "Blu-Ray", 0));
 			AddProduct(new Movie(0, "Schindler's List", 99, 0, "DVD", 0));
-
-			var LVMs = ProductList.Select(p => new ProductViewModel(p)).ToList();
-			ProductBindingSource.DataSource = new BindingList<ProductViewModel>(LVMs);
+			UpdateProductsTable();
 		}
 
 		public void LagerListenerAttach(LagerView view) {
@@ -40,17 +38,25 @@ namespace CS_Labb4_Affar {
 			view.ProductAdded += OnProductAdded;
 		}
 
-		private void OnProductAdded(object? sender, List<string> e) {
-			string type = e.First();
-			e.Remove(e.First());
-			switch (type) {
-				case "Book":	BuildBook(e); break;
-				case "Game":	BuildGame(e); break;
-				case "Movie":	BuildMovie(e); break;
-			}
-		}
+		private void OnProductAdded(object? sender, List<string> e)
+        {
+            string type = e.First();
+            e.Remove(e.First());
+            switch (type)
+            {
+                case "Book": BuildBook(e); break;
+                case "Game": BuildGame(e); break;
+                case "Movie": BuildMovie(e); break;
+            }
+            UpdateProductsTable();
+        }
 
-		private void BuildMovie(List<string> e) {
+        private void UpdateProductsTable()
+        {
+            ProductBindingSource.DataSource = new BindingList<ProductViewModel>(ProductList.Select(p => new ProductViewModel(p)).ToList());
+        }
+
+        private void BuildMovie(List<string> e) {
 			string name = e[0];
 			if (!int.TryParse(e[1], out int price)) return;
 			string format = e[2];

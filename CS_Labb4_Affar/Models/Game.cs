@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS_Labb4_Affar {
+namespace CS_Labb4_Affar.Models {
 	public class Game : Product {
 		public string Platform { get; private set; }
 		public Game(int id, string name, int price, int amount, string platform) : 

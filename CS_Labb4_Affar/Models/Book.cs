@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS_Labb4_Affar {
+namespace CS_Labb4_Affar.Models {
 	public class Book : Product {
 		public string Author { get; private set; }
 		public string Genre { get; private set; }

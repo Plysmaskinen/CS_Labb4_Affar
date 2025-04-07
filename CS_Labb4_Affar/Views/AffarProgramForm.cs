@@ -1,11 +1,11 @@
 namespace CS_Labb4_Affar
 {
-	public partial class TabView : Form {
+	public partial class AffarProgramForm : Form {
 		LagerController lagerController;
 		KassaController kassaController;
 		LagerView lagerUI;
 		KassaView kassaUI;
-		public TabView() {
+		public AffarProgramForm() {
 			InitializeComponent();
 			lagerController = new LagerController();
 			kassaController = new KassaController();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CS_Labb4_Affar.Models;
 using Microsoft.VisualBasic;
 
 namespace CS_Labb4_Affar {

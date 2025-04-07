@@ -1,6 +1,6 @@
 ﻿namespace CS_Labb4_Affar
 {
-    partial class TabView
+    partial class AffarProgramForm
     {
         /// <summary>
         ///  Required designer variable.

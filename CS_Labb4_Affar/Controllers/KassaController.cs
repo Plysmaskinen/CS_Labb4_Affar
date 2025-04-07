@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS_Labb4_Affar {
+namespace CS_Labb4_Affar.Controllers {
 	public class KassaController {
 		public KassaController() {
 			

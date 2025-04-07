@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS_Labb4_Affar {
+namespace CS_Labb4_Affar.Models {
 	public abstract class Product {
 
 		public int ID			{ get; set; }
