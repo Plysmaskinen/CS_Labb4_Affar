@@ -11,7 +11,7 @@ using CS_Labb4_Affar.Controllers;
 
 namespace CS_Labb4_Affar {
 	public partial class AddProductDialog : Form {
-		List<string> inputs = new List<string>();
+		List<string> inputs = [];
 		public event EventHandler<List<string>> ProductAdded;
 		LagerController LagerController;
 		AddBook addBook;	//0
@@ -51,12 +51,17 @@ namespace CS_Labb4_Affar {
 				case 1: inputs = addGame.getInfo(); break;
 				case 2: inputs = addMovie.getInfo(); break;
 			}
+			if (inputs[1] == "" || inputs[2] == "") {
+				MessageBox.Show("Var vänlig fyll i alla obligatoriska fält markerade (*)", "Ogiltig Inmatning");
+				return;
+			}
+
 			ProductAdded?.Invoke(this, inputs);
-			this.Close();
+			Close();
 		}
 
 		private void AddProductCancelButton_Click(object sender, EventArgs e) {
-			this.Close();
+			Close();
 		}
 	}
 }

@@ -24,27 +24,27 @@
 		/// </summary>
 		private void InitializeComponent() {
 			LagerSplitPanel = new SplitContainer();
+			tabControl1 = new TabControl();
+			BookTab = new TabPage();
+			BookTable = new DataGridView();
+			GameTab = new TabPage();
+			GameTable = new DataGridView();
+			MovieTab = new TabPage();
+			MovieTable = new DataGridView();
 			LagerOrderProductsButton = new Button();
 			LagerRemoveProductButton = new Button();
 			LagerAddProductButton = new Button();
 			LagerHelpButton = new Button();
-			tabControl1 = new TabControl();
-			BookTab = new TabPage();
-			GameTab = new TabPage();
-			MovieTab = new TabPage();
-			BookTable = new DataGridView();
-			GameTable = new DataGridView();
-			MovieTable = new DataGridView();
 			((System.ComponentModel.ISupportInitialize)LagerSplitPanel).BeginInit();
 			LagerSplitPanel.Panel1.SuspendLayout();
 			LagerSplitPanel.Panel2.SuspendLayout();
 			LagerSplitPanel.SuspendLayout();
 			tabControl1.SuspendLayout();
 			BookTab.SuspendLayout();
-			GameTab.SuspendLayout();
-			MovieTab.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)BookTable).BeginInit();
+			GameTab.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)GameTable).BeginInit();
+			MovieTab.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)MovieTable).BeginInit();
 			SuspendLayout();
 			// 
@@ -72,6 +72,111 @@
 			LagerSplitPanel.SplitterWidth = 1;
 			LagerSplitPanel.TabIndex = 0;
 			// 
+			// tabControl1
+			// 
+			tabControl1.Controls.Add(BookTab);
+			tabControl1.Controls.Add(GameTab);
+			tabControl1.Controls.Add(MovieTab);
+			tabControl1.Dock = DockStyle.Fill;
+			tabControl1.Location = new Point(0, 0);
+			tabControl1.Name = "tabControl1";
+			tabControl1.SelectedIndex = 0;
+			tabControl1.Size = new Size(792, 396);
+			tabControl1.TabIndex = 0;
+			tabControl1.Selected += tabControl1_Selected;
+			// 
+			// BookTab
+			// 
+			BookTab.Controls.Add(BookTable);
+			BookTab.Location = new Point(4, 24);
+			BookTab.Name = "BookTab";
+			BookTab.Padding = new Padding(3);
+			BookTab.Size = new Size(784, 368);
+			BookTab.TabIndex = 0;
+			BookTab.Text = "Böcker";
+			BookTab.UseVisualStyleBackColor = true;
+			// 
+			// BookTable
+			// 
+			BookTable.AllowUserToAddRows = false;
+			BookTable.AllowUserToDeleteRows = false;
+			BookTable.AllowUserToResizeColumns = false;
+			BookTable.AllowUserToResizeRows = false;
+			BookTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			BookTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			BookTable.Dock = DockStyle.Fill;
+			BookTable.Location = new Point(3, 3);
+			BookTable.MultiSelect = false;
+			BookTable.Name = "BookTable";
+			BookTable.ReadOnly = true;
+			BookTable.RowHeadersVisible = false;
+			BookTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			BookTable.Size = new Size(778, 362);
+			BookTable.TabIndex = 0;
+			BookTable.DataBindingComplete += BookTable_DataBindingComplete;
+			BookTable.SelectionChanged += BookTable_SelectionChanged;
+			// 
+			// GameTab
+			// 
+			GameTab.Controls.Add(GameTable);
+			GameTab.Location = new Point(4, 24);
+			GameTab.Name = "GameTab";
+			GameTab.Padding = new Padding(3);
+			GameTab.Size = new Size(784, 368);
+			GameTab.TabIndex = 1;
+			GameTab.Text = "Dataspel";
+			GameTab.UseVisualStyleBackColor = true;
+			// 
+			// GameTable
+			// 
+			GameTable.AllowUserToAddRows = false;
+			GameTable.AllowUserToDeleteRows = false;
+			GameTable.AllowUserToResizeColumns = false;
+			GameTable.AllowUserToResizeRows = false;
+			GameTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			GameTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			GameTable.Dock = DockStyle.Fill;
+			GameTable.Location = new Point(3, 3);
+			GameTable.MultiSelect = false;
+			GameTable.Name = "GameTable";
+			GameTable.ReadOnly = true;
+			GameTable.RowHeadersVisible = false;
+			GameTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			GameTable.Size = new Size(778, 362);
+			GameTable.TabIndex = 0;
+			GameTable.DataBindingComplete += GameTable_DataBindingComplete;
+			GameTable.SelectionChanged += GameTable_SelectionChanged;
+			// 
+			// MovieTab
+			// 
+			MovieTab.Controls.Add(MovieTable);
+			MovieTab.Location = new Point(4, 24);
+			MovieTab.Name = "MovieTab";
+			MovieTab.Size = new Size(784, 368);
+			MovieTab.TabIndex = 2;
+			MovieTab.Text = "Filmer";
+			MovieTab.UseVisualStyleBackColor = true;
+			// 
+			// MovieTable
+			// 
+			MovieTable.AllowUserToAddRows = false;
+			MovieTable.AllowUserToDeleteRows = false;
+			MovieTable.AllowUserToResizeColumns = false;
+			MovieTable.AllowUserToResizeRows = false;
+			MovieTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			MovieTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			MovieTable.Dock = DockStyle.Fill;
+			MovieTable.Location = new Point(0, 0);
+			MovieTable.MultiSelect = false;
+			MovieTable.Name = "MovieTable";
+			MovieTable.ReadOnly = true;
+			MovieTable.RowHeadersVisible = false;
+			MovieTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			MovieTable.Size = new Size(784, 368);
+			MovieTable.TabIndex = 0;
+			MovieTable.DataBindingComplete += MovieTable_DataBindingComplete;
+			MovieTable.SelectionChanged += MovieTable_SelectionChanged;
+			// 
 			// LagerOrderProductsButton
 			// 
 			LagerOrderProductsButton.Location = new Point(287, 3);
@@ -91,6 +196,7 @@
 			LagerRemoveProductButton.TabIndex = 0;
 			LagerRemoveProductButton.Text = "Ta Bort Produkt ";
 			LagerRemoveProductButton.UseVisualStyleBackColor = true;
+			LagerRemoveProductButton.Click += LagerRemoveProductButton_Click;
 			// 
 			// LagerAddProductButton
 			// 
@@ -114,77 +220,6 @@
 			LagerHelpButton.UseVisualStyleBackColor = true;
 			LagerHelpButton.Click += LagerHelpButton_Click;
 			// 
-			// tabControl1
-			// 
-			tabControl1.Controls.Add(BookTab);
-			tabControl1.Controls.Add(GameTab);
-			tabControl1.Controls.Add(MovieTab);
-			tabControl1.Dock = DockStyle.Fill;
-			tabControl1.Location = new Point(0, 0);
-			tabControl1.Name = "tabControl1";
-			tabControl1.SelectedIndex = 0;
-			tabControl1.Size = new Size(792, 396);
-			tabControl1.TabIndex = 0;
-			// 
-			// BookTab
-			// 
-			BookTab.Controls.Add(BookTable);
-			BookTab.Location = new Point(4, 24);
-			BookTab.Name = "BookTab";
-			BookTab.Padding = new Padding(3);
-			BookTab.Size = new Size(784, 368);
-			BookTab.TabIndex = 0;
-			BookTab.Text = "Böcker";
-			BookTab.UseVisualStyleBackColor = true;
-			// 
-			// GameTab
-			// 
-			GameTab.Controls.Add(GameTable);
-			GameTab.Location = new Point(4, 24);
-			GameTab.Name = "GameTab";
-			GameTab.Padding = new Padding(3);
-			GameTab.Size = new Size(784, 368);
-			GameTab.TabIndex = 1;
-			GameTab.Text = "Dataspel";
-			GameTab.UseVisualStyleBackColor = true;
-			// 
-			// MovieTab
-			// 
-			MovieTab.Controls.Add(MovieTable);
-			MovieTab.Location = new Point(4, 24);
-			MovieTab.Name = "MovieTab";
-			MovieTab.Size = new Size(784, 368);
-			MovieTab.TabIndex = 2;
-			MovieTab.Text = "Filmer";
-			MovieTab.UseVisualStyleBackColor = true;
-			// 
-			// BookTable
-			// 
-			BookTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			BookTable.Dock = DockStyle.Fill;
-			BookTable.Location = new Point(3, 3);
-			BookTable.Name = "BookTable";
-			BookTable.Size = new Size(778, 362);
-			BookTable.TabIndex = 0;
-			// 
-			// GameTable
-			// 
-			GameTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			GameTable.Dock = DockStyle.Fill;
-			GameTable.Location = new Point(3, 3);
-			GameTable.Name = "GameTable";
-			GameTable.Size = new Size(778, 362);
-			GameTable.TabIndex = 0;
-			// 
-			// MovieTable
-			// 
-			MovieTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			MovieTable.Dock = DockStyle.Fill;
-			MovieTable.Location = new Point(0, 0);
-			MovieTable.Name = "MovieTable";
-			MovieTable.Size = new Size(784, 368);
-			MovieTable.TabIndex = 0;
-			// 
 			// LagerView
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -198,10 +233,10 @@
 			LagerSplitPanel.ResumeLayout(false);
 			tabControl1.ResumeLayout(false);
 			BookTab.ResumeLayout(false);
-			GameTab.ResumeLayout(false);
-			MovieTab.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)BookTable).EndInit();
+			GameTab.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)GameTable).EndInit();
+			MovieTab.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)MovieTable).EndInit();
 			ResumeLayout(false);
 		}

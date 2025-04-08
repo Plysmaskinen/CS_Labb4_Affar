@@ -136,8 +136,10 @@
 			// 
 			// AddProductDialog
 			// 
+			AcceptButton = AddProductAcceptButton;
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
+			CancelButton = AddProductCancelButton;
 			ClientSize = new Size(218, 246);
 			Controls.Add(splitContainer1);
 			MaximizeBox = false;

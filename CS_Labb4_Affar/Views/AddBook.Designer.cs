@@ -24,17 +24,17 @@
 		/// </summary>
 		private void InitializeComponent() {
 			label1 = new Label();
-			AddBookNameTextBox = new TextBox();
 			label2 = new Label();
-			AddBookPriceTextBox = new TextBox();
 			label3 = new Label();
-			AddBookAuthTextBox = new TextBox();
 			label4 = new Label();
-			AddBookGenreTextBox = new TextBox();
 			label5 = new Label();
-			AddBookFormatTextBox = new TextBox();
 			label6 = new Label();
-			AddBookLangTextBox = new TextBox();
+			maskedTextBox1 = new MaskedTextBox();
+			maskedTextBox2 = new MaskedTextBox();
+			maskedTextBox3 = new MaskedTextBox();
+			maskedTextBox4 = new MaskedTextBox();
+			maskedTextBox5 = new MaskedTextBox();
+			maskedTextBox6 = new MaskedTextBox();
 			SuspendLayout();
 			// 
 			// label1
@@ -46,14 +46,6 @@
 			label1.TabIndex = 10;
 			label1.Text = "Namn*:";
 			// 
-			// AddBookNameTextBox
-			// 
-			AddBookNameTextBox.Location = new Point(65, 4);
-			AddBookNameTextBox.Name = "AddBookNameTextBox";
-			AddBookNameTextBox.Size = new Size(127, 23);
-			AddBookNameTextBox.TabIndex = 0;
-			AddBookNameTextBox.Text = "ett";
-			// 
 			// label2
 			// 
 			label2.AutoSize = true;
@@ -62,14 +54,6 @@
 			label2.Size = new Size(34, 15);
 			label2.TabIndex = 10;
 			label2.Text = "Pris*:";
-			// 
-			// AddBookPriceTextBox
-			// 
-			AddBookPriceTextBox.Location = new Point(65, 33);
-			AddBookPriceTextBox.Name = "AddBookPriceTextBox";
-			AddBookPriceTextBox.Size = new Size(127, 23);
-			AddBookPriceTextBox.TabIndex = 1;
-			AddBookPriceTextBox.Text = "123";
 			// 
 			// label3
 			// 
@@ -80,14 +64,6 @@
 			label3.TabIndex = 10;
 			label3.Text = "Författare:";
 			// 
-			// AddBookAuthTextBox
-			// 
-			AddBookAuthTextBox.Location = new Point(65, 62);
-			AddBookAuthTextBox.Name = "AddBookAuthTextBox";
-			AddBookAuthTextBox.Size = new Size(127, 23);
-			AddBookAuthTextBox.TabIndex = 2;
-			AddBookAuthTextBox.Text = "två";
-			// 
 			// label4
 			// 
 			label4.AutoSize = true;
@@ -96,14 +72,6 @@
 			label4.Size = new Size(41, 15);
 			label4.TabIndex = 10;
 			label4.Text = "Genre:";
-			// 
-			// AddBookGenreTextBox
-			// 
-			AddBookGenreTextBox.Location = new Point(65, 91);
-			AddBookGenreTextBox.Name = "AddBookGenreTextBox";
-			AddBookGenreTextBox.Size = new Size(127, 23);
-			AddBookGenreTextBox.TabIndex = 3;
-			AddBookGenreTextBox.Text = "tre";
 			// 
 			// label5
 			// 
@@ -114,14 +82,6 @@
 			label5.TabIndex = 10;
 			label5.Text = "Format:";
 			// 
-			// AddBookFormatTextBox
-			// 
-			AddBookFormatTextBox.Location = new Point(65, 120);
-			AddBookFormatTextBox.Name = "AddBookFormatTextBox";
-			AddBookFormatTextBox.Size = new Size(127, 23);
-			AddBookFormatTextBox.TabIndex = 4;
-			AddBookFormatTextBox.Text = "fyra";
-			// 
 			// label6
 			// 
 			label6.AutoSize = true;
@@ -131,29 +91,65 @@
 			label6.TabIndex = 10;
 			label6.Text = "Språk:";
 			// 
-			// AddBookLangTextBox
+			// maskedTextBox1
 			// 
-			AddBookLangTextBox.Location = new Point(65, 149);
-			AddBookLangTextBox.Name = "AddBookLangTextBox";
-			AddBookLangTextBox.Size = new Size(127, 23);
-			AddBookLangTextBox.TabIndex = 5;
-			AddBookLangTextBox.Text = "fem";
+			maskedTextBox1.Location = new Point(65, 4);
+			maskedTextBox1.Name = "maskedTextBox1";
+			maskedTextBox1.Size = new Size(127, 23);
+			maskedTextBox1.TabIndex = 1;
+			// 
+			// maskedTextBox2
+			// 
+			maskedTextBox2.Location = new Point(65, 33);
+			maskedTextBox2.Mask = "999999999999";
+			maskedTextBox2.Name = "maskedTextBox2";
+			maskedTextBox2.Size = new Size(127, 23);
+			maskedTextBox2.TabIndex = 2;
+			maskedTextBox2.ValidatingType = typeof(int);
+			// 
+			// maskedTextBox3
+			// 
+			maskedTextBox3.Location = new Point(65, 62);
+			maskedTextBox3.Name = "maskedTextBox3";
+			maskedTextBox3.Size = new Size(127, 23);
+			maskedTextBox3.TabIndex = 3;
+			// 
+			// maskedTextBox4
+			// 
+			maskedTextBox4.Location = new Point(65, 91);
+			maskedTextBox4.Name = "maskedTextBox4";
+			maskedTextBox4.Size = new Size(127, 23);
+			maskedTextBox4.TabIndex = 4;
+			// 
+			// maskedTextBox5
+			// 
+			maskedTextBox5.Location = new Point(65, 120);
+			maskedTextBox5.Name = "maskedTextBox5";
+			maskedTextBox5.Size = new Size(127, 23);
+			maskedTextBox5.TabIndex = 5;
+			// 
+			// maskedTextBox6
+			// 
+			maskedTextBox6.Location = new Point(65, 149);
+			maskedTextBox6.Name = "maskedTextBox6";
+			maskedTextBox6.Size = new Size(127, 23);
+			maskedTextBox6.TabIndex = 6;
 			// 
 			// AddBook
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			Controls.Add(AddBookLangTextBox);
+			Controls.Add(maskedTextBox6);
+			Controls.Add(maskedTextBox5);
+			Controls.Add(maskedTextBox4);
+			Controls.Add(maskedTextBox3);
+			Controls.Add(maskedTextBox2);
+			Controls.Add(maskedTextBox1);
 			Controls.Add(label6);
-			Controls.Add(AddBookFormatTextBox);
 			Controls.Add(label5);
-			Controls.Add(AddBookGenreTextBox);
 			Controls.Add(label4);
-			Controls.Add(AddBookAuthTextBox);
 			Controls.Add(label3);
-			Controls.Add(AddBookPriceTextBox);
 			Controls.Add(label2);
-			Controls.Add(AddBookNameTextBox);
 			Controls.Add(label1);
 			Name = "AddBook";
 			Size = new Size(195, 176);
@@ -164,16 +160,16 @@
 		#endregion
 
 		private Label label1;
-		private TextBox AddBookNameTextBox;
 		private Label label2;
-		private TextBox AddBookPriceTextBox;
 		private Label label3;
-		private TextBox AddBookAuthTextBox;
 		private Label label4;
-		private TextBox AddBookGenreTextBox;
 		private Label label5;
-		private TextBox AddBookFormatTextBox;
 		private Label label6;
-		private TextBox AddBookLangTextBox;
+		private MaskedTextBox maskedTextBox1;
+		private MaskedTextBox maskedTextBox2;
+		private MaskedTextBox maskedTextBox3;
+		private MaskedTextBox maskedTextBox4;
+		private MaskedTextBox maskedTextBox5;
+		private MaskedTextBox maskedTextBox6;
 	}
 }

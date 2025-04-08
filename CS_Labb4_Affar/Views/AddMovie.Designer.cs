@@ -23,22 +23,15 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			AddMovieRuntimeTextBox = new TextBox();
 			label4 = new Label();
-			AddMovieFormatTextBox = new TextBox();
 			label3 = new Label();
-			AddMoviePriceTextBox = new TextBox();
 			label2 = new Label();
-			AddMovieNameTextBox = new TextBox();
 			label1 = new Label();
+			maskedTextBox1 = new MaskedTextBox();
+			maskedTextBox2 = new MaskedTextBox();
+			maskedTextBox3 = new MaskedTextBox();
+			maskedTextBox4 = new MaskedTextBox();
 			SuspendLayout();
-			// 
-			// AddMovieRuntimeTextBox
-			// 
-			AddMovieRuntimeTextBox.Location = new Point(66, 91);
-			AddMovieRuntimeTextBox.Name = "AddMovieRuntimeTextBox";
-			AddMovieRuntimeTextBox.Size = new Size(127, 23);
-			AddMovieRuntimeTextBox.TabIndex = 10;
 			// 
 			// label4
 			// 
@@ -46,15 +39,8 @@
 			label4.Location = new Point(4, 93);
 			label4.Name = "label4";
 			label4.Size = new Size(46, 15);
-			label4.TabIndex = 4;
+			label4.TabIndex = 10;
 			label4.Text = "Speltid:";
-			// 
-			// AddMovieFormatTextBox
-			// 
-			AddMovieFormatTextBox.Location = new Point(66, 62);
-			AddMovieFormatTextBox.Name = "AddMovieFormatTextBox";
-			AddMovieFormatTextBox.Size = new Size(127, 23);
-			AddMovieFormatTextBox.TabIndex = 11;
 			// 
 			// label3
 			// 
@@ -62,15 +48,8 @@
 			label3.Location = new Point(4, 64);
 			label3.Name = "label3";
 			label3.Size = new Size(48, 15);
-			label3.TabIndex = 5;
+			label3.TabIndex = 10;
 			label3.Text = "Format:";
-			// 
-			// AddMoviePriceTextBox
-			// 
-			AddMoviePriceTextBox.Location = new Point(66, 33);
-			AddMoviePriceTextBox.Name = "AddMoviePriceTextBox";
-			AddMoviePriceTextBox.Size = new Size(127, 23);
-			AddMoviePriceTextBox.TabIndex = 12;
 			// 
 			// label2
 			// 
@@ -78,15 +57,8 @@
 			label2.Location = new Point(4, 35);
 			label2.Name = "label2";
 			label2.Size = new Size(34, 15);
-			label2.TabIndex = 6;
+			label2.TabIndex = 10;
 			label2.Text = "Pris*:";
-			// 
-			// AddMovieNameTextBox
-			// 
-			AddMovieNameTextBox.Location = new Point(66, 4);
-			AddMovieNameTextBox.Name = "AddMovieNameTextBox";
-			AddMovieNameTextBox.Size = new Size(127, 23);
-			AddMovieNameTextBox.TabIndex = 13;
 			// 
 			// label1
 			// 
@@ -94,20 +66,52 @@
 			label1.Location = new Point(4, 6);
 			label1.Name = "label1";
 			label1.Size = new Size(48, 15);
-			label1.TabIndex = 7;
+			label1.TabIndex = 10;
 			label1.Text = "Namn*:";
+			// 
+			// maskedTextBox1
+			// 
+			maskedTextBox1.Location = new Point(66, 3);
+			maskedTextBox1.Name = "maskedTextBox1";
+			maskedTextBox1.Size = new Size(127, 23);
+			maskedTextBox1.TabIndex = 1;
+			// 
+			// maskedTextBox2
+			// 
+			maskedTextBox2.Location = new Point(66, 32);
+			maskedTextBox2.Mask = "999999999999";
+			maskedTextBox2.Name = "maskedTextBox2";
+			maskedTextBox2.Size = new Size(127, 23);
+			maskedTextBox2.TabIndex = 2;
+			maskedTextBox2.ValidatingType = typeof(int);
+			// 
+			// maskedTextBox3
+			// 
+			maskedTextBox3.Location = new Point(66, 61);
+			maskedTextBox3.Name = "maskedTextBox3";
+			maskedTextBox3.Size = new Size(127, 23);
+			maskedTextBox3.TabIndex = 3;
+			// 
+			// maskedTextBox4
+			// 
+			maskedTextBox4.Location = new Point(66, 90);
+			maskedTextBox4.Mask = "999999999999";
+			maskedTextBox4.Name = "maskedTextBox4";
+			maskedTextBox4.Size = new Size(127, 23);
+			maskedTextBox4.TabIndex = 4;
+			maskedTextBox4.ValidatingType = typeof(int);
 			// 
 			// AddMovie
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			Controls.Add(AddMovieRuntimeTextBox);
+			Controls.Add(maskedTextBox4);
+			Controls.Add(maskedTextBox3);
+			Controls.Add(maskedTextBox2);
+			Controls.Add(maskedTextBox1);
 			Controls.Add(label4);
-			Controls.Add(AddMovieFormatTextBox);
 			Controls.Add(label3);
-			Controls.Add(AddMoviePriceTextBox);
 			Controls.Add(label2);
-			Controls.Add(AddMovieNameTextBox);
 			Controls.Add(label1);
 			Name = "AddMovie";
 			Size = new Size(197, 118);
@@ -116,14 +120,13 @@
 		}
 
 		#endregion
-
-		private TextBox AddMovieRuntimeTextBox;
 		private Label label4;
-		private TextBox AddMovieFormatTextBox;
 		private Label label3;
-		private TextBox AddMoviePriceTextBox;
 		private Label label2;
-		private TextBox AddMovieNameTextBox;
 		private Label label1;
+		private MaskedTextBox maskedTextBox1;
+		private MaskedTextBox maskedTextBox2;
+		private MaskedTextBox maskedTextBox3;
+		private MaskedTextBox maskedTextBox4;
 	}
 }

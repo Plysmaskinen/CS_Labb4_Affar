@@ -18,41 +18,48 @@ namespace CS_Labb4_Affar {
 		public BindingList<Movie> MoviesTable { get; set; } = new BindingList<Movie>();
 
 		public LagerController() {
-			//AddBook(new Book(0, "Bello Gallico et Civili", 449, 0, "Julius Caesar", "Historia", "Inbunden", "Latin"));
-			//AddBook(new Book(0, "How to Read a Book", 149, 0, "Mortimer J. Adler", "Kursliteratur", "Pocket", ""));
-			//AddBook(new Book(0, "Moby Dick", 49, 0, "Herman Melville", "Äventyr", "Pocket", ""));
-			//AddBook(new Book(0, "The Great Gatsby", 79, 0, "F. Scott Fitzgerald", "Noir", "E-Bok", ""));
-			//AddBook(new Book(0, "House of Leaves", 49, 0, "Mark Z. Danielewski", "Skräck", "", ""));
-			//AddGame(new Game(0, "Elden Ring", 599, 0, "Playstation 5"));
-			//AddGame(new Game(0, "Demon's Souls", 499, 0, "Playstation 5"));
-			//AddGame(new Game(0, "Microsoft Flight Simulator", 499, 0, "PC"));
-			//AddGame(new Game(0, "Planescape Torment", 99, 0, "PC"));
-			//AddGame(new Game(0, "Disco Elysium", 399, 0, "PC"));
-			//AddMovie(new Movie(0, "Schindler's List", 99, 0, "DVD", 0));
-			//AddMovie(new Movie(0, "Nyckeln till Frihet", 99, 0, "DVD", 142));
-			//AddMovie(new Movie(0, "Gudfadern", 99, 0, "DVD", 152));
-			//AddMovie(new Movie(0, "Konungens Återkomst", 199, 0, "Blu-Ray", 154));
-			//AddMovie(new Movie(0, "Pulp Fiction", 199, 0, "Blu-Ray", 0));
-			//MessageBox.Show("böcker: " + BooksTable.Count());
+
 		}
 
 		public void AddProdListenerAttach(AddProductDialog view) {
 			view.ProductAdded += OnProductAdded;
 		}
 
-		private void OnProductAdded(object? sender, List<string> e)
-        {
-            string type = e.First();
-            e.Remove(e.First());
-            switch (type)
-            {
-                case "Book": BuildBook(e); break;
-                case "Game": BuildGame(e); break;
-                case "Movie": BuildMovie(e); break;
-            }
-        }
+		public void OrderProdListenerAttach(OrderProductsDialog view) {
+			view.OrderInfo += OnOrderInfo;
+		}
 
-        public void BuildMovie(List<string> e) {
+		private void OnProductAdded(object? sender, List<string> e) {
+			string type = e.First();
+			e.Remove(e.First());
+			switch (type){
+				case "Book": BuildBook(e); break;
+				case "Game": BuildGame(e); break;
+				case "Movie": BuildMovie(e); break;
+			}
+		}
+
+		private void OnOrderInfo(object? sender, Dictionary<int, int> e) {
+			foreach(var item in e) {
+				foreach (var prod in BooksTable) {
+					if (item.Key == prod.ID) {
+						prod.Amount += item.Value;
+					}
+				}
+				foreach (var prod in GamesTable) {
+					if (item.Key == prod.ID) {
+						prod.Amount += item.Value;
+					}
+				}
+				foreach (var prod in MoviesTable) {
+					if (item.Key == prod.ID) {
+						prod.Amount += item.Value;
+					}
+				}
+			}
+		}
+
+		public void BuildMovie(List<string> e) {
 			string name = e[0];
 			if (!int.TryParse(e[1], out int price)) return;
 			string format = e[2];

@@ -37,54 +37,26 @@ namespace CS_Labb4_Affar.Controllers {
 			UpdateID();
 		}
 
-		private void UpdateID() {
-			int booksID = 0;
-			int gamesID = 0;
-			int moviesID = 0;
-			List<int> IDs = [];
-			foreach (Book book in LagerController.BooksTable) {
-				booksID = booksID < book.ID ? book.ID : booksID;
-			}
-			foreach (Game game in LagerController.GamesTable) {
-				gamesID = gamesID < game.ID ? game.ID : gamesID;
-			}
-			foreach (Movie movie in LagerController.MoviesTable) {
-				moviesID = moviesID < movie.ID ? movie.ID : moviesID;
-			}
-			IDs.Add(booksID);
-			IDs.Add(gamesID);
-			IDs.Add(moviesID);
-			LagerController.nextID = IDs.Max()+1;
-		}
-
 		public void WriteDatabase(object? sender, EventArgs e) {
-			MessageBox.Show("Saved");
 			WriteBooks(LagerController.BooksTable);
 			WriteGames(LagerController.GamesTable);
 			WriteMovies(LagerController.MoviesTable);
 		}
 
-		//private BindingList<Book> ReadBooks() {
-		//	var books = new BindingList<Book>();
-		//	List<string> rows = ReadLinesFromCSV("books");
+		private void UpdateID() {
+			List<int> IDs = [];
+			foreach (Book book in LagerController.BooksTable) {
+				IDs.Add(book.ID);
+			}
+			foreach (Game game in LagerController.GamesTable) {
+				IDs.Add(game.ID);
+			}
+			foreach (Movie movie in LagerController.MoviesTable) {
+				IDs.Add(movie.ID);
+			}
+			LagerController.nextID = IDs.Max() + 1;
+		}
 
-		//	foreach (string row in rows) {
-		//		string[] columns = row.Split(',');
-		//		Book book = new Book(
-		//			int.Parse(columns[0]),
-		//			columns[1],
-		//			int.Parse(columns[2]),
-		//			int.Parse(columns[3]),
-		//			columns[4],
-		//			columns[5],
-		//			columns[6],
-		//			columns[7]
-		//			);
-		//		books.Add(book);
-		//		LagerController.AddBook(book);
-		//	}
-		//	return books;
-		//}
 		private void ReadBooks() {
 			List<string> rows = ReadLinesFromCSV("books");
 
@@ -104,25 +76,6 @@ namespace CS_Labb4_Affar.Controllers {
 			}
 		}
 
-		//private BindingList<Game> ReadGames() {
-		//	var games = new BindingList<Game>();
-		//	List<string> rows = ReadLinesFromCSV("games");
-
-		//	foreach (string row in rows) {
-		//		string[] columns = row.Split(',');
-		//		Game game = new Game(
-		//			int.Parse(columns[0]),
-		//			columns[1],
-		//			int.Parse(columns[2]),
-		//			int.Parse(columns[3]),
-		//			columns[4]
-		//		);
-		//		games.Add(game);
-		//		LagerController.AddGame(game);
-		//	}
-		//	return games;
-		//}
-
 		private void ReadGames() {
 			List<string> rows = ReadLinesFromCSV("games");
 
@@ -139,46 +92,25 @@ namespace CS_Labb4_Affar.Controllers {
 			}
 		}
 
-		//private BindingList<Movie> ReadMovies() {
-		//	var movies = new BindingList<Movie>();
-		//	List<string> rows = ReadLinesFromCSV("movies");
-
-		//	foreach (string row in rows) {
-		//		string[] columns = row.Split(',');
-		//		Movie movie = new Movie(
-		//			int.Parse(columns[0]),
-		//			columns[1],
-		//			int.Parse(columns[2]),
-		//			int.Parse(columns[3]),
-		//			columns[4],
-		//			int.Parse(columns[3])
-		//		);
-		//		movies.Add(movie);
-		//		LagerController.AddMovie(movie);
-		//	}
-		//	return movies;
-		//}
-
 		private void ReadMovies() {
 			List<string> rows = ReadLinesFromCSV("movies");
 
 			foreach (string row in rows) {
 				string[] columns = row.Split(',');
+				int? runtime = string.IsNullOrEmpty(columns[5]) ? null : int.Parse(columns[5]);
 				Movie movie = new Movie(
 					int.Parse(columns[0]),
 					columns[1],
 					int.Parse(columns[2]),
 					int.Parse(columns[3]),
 					columns[4],
-					int.Parse(columns[3])
+					runtime
 				);
 				LagerController.AddMovie(movie);
 			}
 		}
 
 		private void WriteBooks(BindingList<Book> Books) {
-			if (Books.Count > 0)
-				MessageBox.Show("Books ej tom");
 			var lines = new List<string> {
 				GetHeader(typeof(Book))
 			};
@@ -189,8 +121,6 @@ namespace CS_Labb4_Affar.Controllers {
 		}
 
 		private void WriteGames(BindingList<Game> Games) {
-			if (Games.Count > 0)
-				MessageBox.Show("games ej tom");
 			var lines = new List<string> {
 				GetHeader(typeof(Game))
 			};
@@ -201,8 +131,6 @@ namespace CS_Labb4_Affar.Controllers {
 		}
 
 		private void WriteMovies(BindingList<Movie> Movies) {
-			if (Movies.Count > 0)
-				MessageBox.Show("Movies ej tom");
 			var lines = new List<string> {
 				GetHeader(typeof(Movie))
 			};
@@ -225,7 +153,7 @@ namespace CS_Labb4_Affar.Controllers {
 				MessageBox.Show("Error under läsningen av CSV: " + ex.Message);
 			}
 
-			return new List<string>();
+			return [];
 		}
 
 		public void WriteLinesToCSV(string fileName, List<string> lines) {

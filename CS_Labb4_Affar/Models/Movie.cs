@@ -8,7 +8,7 @@ namespace CS_Labb4_Affar.Models {
 	public class Movie : Product {
 		public string Format { get; private set; }
 		public int? Runtime { get; private set; }
-		public Movie(int id, string name, int price, int amount, string format, int runtime) : 
+		public Movie(int id, string name, int price, int amount, string format, int? runtime) : 
 			   base(id, name, price, amount) {
 			Format = format;
 			Runtime = runtime;
