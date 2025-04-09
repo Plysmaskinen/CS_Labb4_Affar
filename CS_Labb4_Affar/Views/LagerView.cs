@@ -16,6 +16,7 @@ namespace CS_Labb4_Affar {
 		LagerController LagerController;
 		public event EventHandler? SaveToFile;
 		public event EventHandler? ReadFromFile;
+		public event EventHandler? KassaListsLoad;
 		private List<string> BookColumnOrder = ["ID", "Name", "Price", "Amount", "Author", "Genre", "Format", "Lang"];
 		private List<string> GameColumnOrder = ["ID", "Name", "Price", "Amount", "Platform"];
 		private List<string> MovieColumnOrder = ["ID", "Name", "Price", "Amount", "Format", "Runtime"];
@@ -93,33 +94,13 @@ namespace CS_Labb4_Affar {
 			}
 		}
 
-		private void SetBookTableColumnOrder() {
-			BookTable.Columns["ID"].DisplayIndex = 0;
-			BookTable.Columns["Name"].DisplayIndex = 1;
-			BookTable.Columns["Price"].DisplayIndex = 2;
-			BookTable.Columns["Amount"].DisplayIndex = 3;
-			BookTable.Columns["Author"].DisplayIndex = 4;
-			BookTable.Columns["Genre"].DisplayIndex = 5;
-			BookTable.Columns["Format"].DisplayIndex = 6;
-			BookTable.Columns["Lang"].DisplayIndex = 7;
-			
-		}
-
-		private void SetGameTableColumnOrder() {
-			GameTable.Columns["Platform"].DisplayIndex = 4;
-		}
-
-		private void SetMovieTableColumnOrder() {
-			MovieTable.Columns["Format"].DisplayIndex = 4;
-			MovieTable.Columns["Runtime"].DisplayIndex = 5;
-		}
-
 		public void Save() {
 			SaveToFile?.Invoke(this, EventArgs.Empty);
 		}
 
 		public void Load() {
 			ReadFromFile?.Invoke(this, EventArgs.Empty);
+			KassaListsLoad?.Invoke(this, EventArgs.Empty);
 		}
 
 		private void BookTable_SelectionChanged(object sender, EventArgs e) {

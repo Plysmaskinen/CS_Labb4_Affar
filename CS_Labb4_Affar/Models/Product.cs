@@ -9,8 +9,8 @@ namespace CS_Labb4_Affar.Models {
 	public abstract class Product : INotifyPropertyChanged{
 
 		public int ID			{ get; set; }
-		public string Name		{ get; private set; }
-		public int Price		{ get; private set; }
+		public string Name		{ get; /*private*/ set; }
+		public int Price		{ get; /*private*/ set; }
 
 		private int amount;
 		public int Amount {
@@ -19,6 +19,7 @@ namespace CS_Labb4_Affar.Models {
 				if (amount != value) {
 					amount = value;
 					OnPropertyChanged(nameof(Amount));
+					OnPropertyChanged(nameof(KassaDisp));
 				}
 			} 
 		}
@@ -33,6 +34,11 @@ namespace CS_Labb4_Affar.Models {
 
 		protected void OnPropertyChanged(string propName) =>
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+
+		public string KassaDisp => 
+			Amount > 0 ?
+			$"{Amount}x {Name}, {Price}kr" :
+			string.Empty;
 
 		public abstract override string ToString();
 	}

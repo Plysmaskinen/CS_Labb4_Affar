@@ -1,9 +1,9 @@
-ID,Name,Price,Amount,Platform
-6,Elden Ring,599,0,Playstation 5
-7,Demon's Souls,499,0,Playstation 5
-8,Microsoft Flight Simulator,499,0,PC
-9,Planescape Torment,99,0,PC
-10,Disco Elysium,399,0,PC
-19,skor,2,0,
-20,yea,20,0,höga skor med gepardfläckar
-22,hjälp mannen!,2137,0,en tegelsten i väggen
+ID,Name,Price,Amount,KassaDisp,Platform
+6,Elden Ring,599,1,Playstation 5
+7,Demon's Souls,499,1,Playstation 5
+8,Microsoft Flight Simulator,499,1,PC
+9,Planescape Torment,99,1,PC
+10,Disco Elysium,399,1,PC
+19,skor,2,1,
+20,yea,20,1,höga skor med gepardfläckar
+22,hjälp mannen!,2137,1,en tegelsten i väggen

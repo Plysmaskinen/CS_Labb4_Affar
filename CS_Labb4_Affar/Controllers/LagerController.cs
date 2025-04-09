@@ -13,9 +13,11 @@ namespace CS_Labb4_Affar {
 	public class LagerController {
 
 		public int nextID = 1;
-		public BindingList<Book> BooksTable { get; set; } = new BindingList<Book>();
-		public BindingList<Game> GamesTable { get; set; } = new BindingList<Game>();
-		public BindingList<Movie> MoviesTable { get; set; } = new BindingList<Movie>();
+		public BindingList<Book> BooksTable { get; set; } = [];
+		public BindingList<Game> GamesTable { get; set; } = [];
+		public BindingList<Movie> MoviesTable { get; set; } = [];
+		public BindingList<Product> prods { get; set; } = [];
+		public event EventHandler KassaAttachList;
 
 		public LagerController() {
 
@@ -27,6 +29,23 @@ namespace CS_Labb4_Affar {
 
 		public void OrderProdListenerAttach(OrderProductsDialog view) {
 			view.OrderInfo += OnOrderInfo;
+		}
+
+		public void LoadKassaListsListenerAttach(LagerView view) {
+			view.KassaListsLoad += OnLoadKassaLists;
+		}
+
+		private void OnLoadKassaLists(object? sender, EventArgs e) {
+			foreach (Book prod in BooksTable) {
+				prods.Add(prod);
+			}
+			foreach (Game prod in GamesTable) {
+				prods.Add(prod);
+			}
+			foreach (Movie prod in MoviesTable) {
+				prods.Add(prod);
+			}
+			KassaAttachList?.Invoke(this, EventArgs.Empty);
 		}
 
 		private void OnProductAdded(object? sender, List<string> e) {
@@ -89,16 +108,17 @@ namespace CS_Labb4_Affar {
 				book.ID = nextID++;
 			BooksTable.Add(book);
 		}
+
 		public void AddGame(Game game) {
 			if (game.ID == 0)
 				game.ID = nextID++;
 			GamesTable.Add(game);
 		}
+
 		public void AddMovie(Movie movie) {
 			if (movie.ID == 0)
 				movie.ID = nextID++;
 			MoviesTable.Add(movie);
 		}
-
 	}
 }

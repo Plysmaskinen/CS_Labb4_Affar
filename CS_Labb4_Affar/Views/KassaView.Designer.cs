@@ -24,13 +24,11 @@
 		/// </summary>
 		private void InitializeComponent() {
 			splitContainer1 = new SplitContainer();
-			splitContainer3 = new SplitContainer();
 			KassaInventoryListBox = new ListBox();
-			KassaIdSearchRTB = new RichTextBox();
 			splitContainer2 = new SplitContainer();
 			KassaSummaLabel = new Label();
 			KassaPrisLabel = new Label();
-			KassaTillKassaButton = new Button();
+			KorgTillKassaButton = new Button();
 			KassaTillKorgButton = new Button();
 			splitContainer4 = new SplitContainer();
 			KassaKorgListBox = new ListBox();
@@ -39,10 +37,6 @@
 			splitContainer1.Panel1.SuspendLayout();
 			splitContainer1.Panel2.SuspendLayout();
 			splitContainer1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
-			splitContainer3.Panel1.SuspendLayout();
-			splitContainer3.Panel2.SuspendLayout();
-			splitContainer3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
 			splitContainer2.Panel1.SuspendLayout();
 			splitContainer2.Panel2.SuspendLayout();
@@ -62,7 +56,7 @@
 			// 
 			// splitContainer1.Panel1
 			// 
-			splitContainer1.Panel1.Controls.Add(splitContainer3);
+			splitContainer1.Panel1.Controls.Add(KassaInventoryListBox);
 			// 
 			// splitContainer1.Panel2
 			// 
@@ -71,26 +65,6 @@
 			splitContainer1.SplitterDistance = 264;
 			splitContainer1.TabIndex = 0;
 			// 
-			// splitContainer3
-			// 
-			splitContainer3.Dock = DockStyle.Fill;
-			splitContainer3.FixedPanel = FixedPanel.Panel2;
-			splitContainer3.IsSplitterFixed = true;
-			splitContainer3.Location = new Point(0, 0);
-			splitContainer3.Name = "splitContainer3";
-			splitContainer3.Orientation = Orientation.Horizontal;
-			// 
-			// splitContainer3.Panel1
-			// 
-			splitContainer3.Panel1.Controls.Add(KassaInventoryListBox);
-			// 
-			// splitContainer3.Panel2
-			// 
-			splitContainer3.Panel2.Controls.Add(KassaIdSearchRTB);
-			splitContainer3.Size = new Size(264, 422);
-			splitContainer3.SplitterDistance = 393;
-			splitContainer3.TabIndex = 0;
-			// 
 			// KassaInventoryListBox
 			// 
 			KassaInventoryListBox.Dock = DockStyle.Fill;
@@ -98,18 +72,9 @@
 			KassaInventoryListBox.ItemHeight = 15;
 			KassaInventoryListBox.Location = new Point(0, 0);
 			KassaInventoryListBox.Name = "KassaInventoryListBox";
-			KassaInventoryListBox.Size = new Size(264, 393);
-			KassaInventoryListBox.TabIndex = 0;
-			// 
-			// KassaIdSearchRTB
-			// 
-			KassaIdSearchRTB.Dock = DockStyle.Fill;
-			KassaIdSearchRTB.Location = new Point(0, 0);
-			KassaIdSearchRTB.Multiline = false;
-			KassaIdSearchRTB.Name = "KassaIdSearchRTB";
-			KassaIdSearchRTB.Size = new Size(264, 25);
-			KassaIdSearchRTB.TabIndex = 0;
-			KassaIdSearchRTB.Text = "ID:";
+			KassaInventoryListBox.Size = new Size(264, 422);
+			KassaInventoryListBox.TabIndex = 1;
+			KassaInventoryListBox.SelectedIndexChanged += KassaInventoryListBox_SelectedIndexChanged;
 			// 
 			// splitContainer2
 			// 
@@ -122,7 +87,7 @@
 			// 
 			splitContainer2.Panel1.Controls.Add(KassaSummaLabel);
 			splitContainer2.Panel1.Controls.Add(KassaPrisLabel);
-			splitContainer2.Panel1.Controls.Add(KassaTillKassaButton);
+			splitContainer2.Panel1.Controls.Add(KorgTillKassaButton);
 			splitContainer2.Panel1.Controls.Add(KassaTillKorgButton);
 			// 
 			// splitContainer2.Panel2
@@ -150,15 +115,16 @@
 			KassaPrisLabel.TabIndex = 2;
 			KassaPrisLabel.Text = "Prissumma:";
 			// 
-			// KassaTillKassaButton
+			// KorgTillKassaButton
 			// 
-			KassaTillKassaButton.Enabled = false;
-			KassaTillKassaButton.Location = new Point(66, 179);
-			KassaTillKassaButton.Name = "KassaTillKassaButton";
-			KassaTillKassaButton.Size = new Size(133, 23);
-			KassaTillKassaButton.TabIndex = 1;
-			KassaTillKassaButton.Text = "Ta Bort Från Varukorg";
-			KassaTillKassaButton.UseVisualStyleBackColor = true;
+			KorgTillKassaButton.Enabled = false;
+			KorgTillKassaButton.Location = new Point(66, 179);
+			KorgTillKassaButton.Name = "KorgTillKassaButton";
+			KorgTillKassaButton.Size = new Size(133, 23);
+			KorgTillKassaButton.TabIndex = 1;
+			KorgTillKassaButton.Text = "Ta Bort Från Varukorg";
+			KorgTillKassaButton.UseVisualStyleBackColor = true;
+			KorgTillKassaButton.Click += KorgTillKassaButton_Click;
 			// 
 			// KassaTillKorgButton
 			// 
@@ -169,6 +135,7 @@
 			KassaTillKorgButton.TabIndex = 0;
 			KassaTillKorgButton.Text = "Lägg Till I Varukorg";
 			KassaTillKorgButton.UseVisualStyleBackColor = true;
+			KassaTillKorgButton.Click += KassaTillKorgButton_Click;
 			// 
 			// splitContainer4
 			// 
@@ -199,6 +166,7 @@
 			KassaKorgListBox.Name = "KassaKorgListBox";
 			KassaKorgListBox.Size = new Size(256, 393);
 			KassaKorgListBox.TabIndex = 1;
+			KassaKorgListBox.SelectedIndexChanged += KassaKorgListBox_SelectedIndexChanged;
 			// 
 			// KassaTransaktionButton
 			// 
@@ -209,6 +177,7 @@
 			KassaTransaktionButton.TabIndex = 0;
 			KassaTransaktionButton.Text = "Genomför Transaktion";
 			KassaTransaktionButton.UseVisualStyleBackColor = true;
+			KassaTransaktionButton.Click += KassaTransaktionButton_Click;
 			// 
 			// KassaView
 			// 
@@ -221,10 +190,6 @@
 			splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
 			splitContainer1.ResumeLayout(false);
-			splitContainer3.Panel1.ResumeLayout(false);
-			splitContainer3.Panel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
-			splitContainer3.ResumeLayout(false);
 			splitContainer2.Panel1.ResumeLayout(false);
 			splitContainer2.Panel1.PerformLayout();
 			splitContainer2.Panel2.ResumeLayout(false);
@@ -240,16 +205,14 @@
 		#endregion
 
 		private SplitContainer splitContainer1;
-		private SplitContainer splitContainer3;
-		private ListBox KassaInventoryListBox;
 		private SplitContainer splitContainer2;
 		private Label KassaSummaLabel;
 		private Label KassaPrisLabel;
-		private Button KassaTillKassaButton;
+		private Button KorgTillKassaButton;
 		private Button KassaTillKorgButton;
 		private SplitContainer splitContainer4;
 		private ListBox KassaKorgListBox;
 		private Button KassaTransaktionButton;
-		private RichTextBox KassaIdSearchRTB;
+		private ListBox KassaInventoryListBox;
 	}
 }
