@@ -27,8 +27,8 @@
 			label2 = new Label();
 			label1 = new Label();
 			maskedTextBox1 = new MaskedTextBox();
-			maskedTextBox2 = new MaskedTextBox();
 			maskedTextBox3 = new MaskedTextBox();
+			textBox1 = new TextBox();
 			SuspendLayout();
 			// 
 			// label3
@@ -65,15 +65,6 @@
 			maskedTextBox1.Size = new Size(127, 23);
 			maskedTextBox1.TabIndex = 1;
 			// 
-			// maskedTextBox2
-			// 
-			maskedTextBox2.Location = new Point(65, 32);
-			maskedTextBox2.Mask = "999999999999";
-			maskedTextBox2.Name = "maskedTextBox2";
-			maskedTextBox2.Size = new Size(127, 23);
-			maskedTextBox2.TabIndex = 2;
-			maskedTextBox2.ValidatingType = typeof(int);
-			// 
 			// maskedTextBox3
 			// 
 			maskedTextBox3.Location = new Point(65, 61);
@@ -81,12 +72,22 @@
 			maskedTextBox3.Size = new Size(127, 23);
 			maskedTextBox3.TabIndex = 3;
 			// 
+			// textBox1
+			// 
+			textBox1.Location = new Point(65, 32);
+			textBox1.MaxLength = 9;
+			textBox1.Name = "textBox1";
+			textBox1.Size = new Size(127, 23);
+			textBox1.TabIndex = 2;
+			textBox1.TextAlign = HorizontalAlignment.Right;
+			textBox1.KeyPress += textBox1_KeyPress;
+			// 
 			// AddGame
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
+			Controls.Add(textBox1);
 			Controls.Add(maskedTextBox3);
-			Controls.Add(maskedTextBox2);
 			Controls.Add(maskedTextBox1);
 			Controls.Add(label3);
 			Controls.Add(label2);
@@ -102,7 +103,7 @@
 		private Label label2;
 		private Label label1;
 		private MaskedTextBox maskedTextBox1;
-		private MaskedTextBox maskedTextBox2;
 		private MaskedTextBox maskedTextBox3;
+		private TextBox textBox1;
 	}
 }

@@ -69,7 +69,11 @@ namespace CS_Labb4_Affar {
 		}
 
 		private void LagerHelpButton_Click(object sender, EventArgs e) {
-
+			MessageBox.Show(
+				"Klicka på den vänstar knappen längst ner på fönstret för att lägga till en ny produkt för försäljning. Klicka på den högra knappen istället för att beställa exemplar av de befintliga produkterna. Klicka på knappen i mitten, med en vara i listan vald, för att ta bort den från lagret.",
+				"Lagerhjälp",
+				MessageBoxButtons.OK
+			);
 		}
 
 		private void RemoveSelectedProduct<T>(DataGridView data, BindingList<T> table) where T : class {

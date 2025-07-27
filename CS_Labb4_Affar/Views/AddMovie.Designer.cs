@@ -28,9 +28,9 @@
 			label2 = new Label();
 			label1 = new Label();
 			maskedTextBox1 = new MaskedTextBox();
-			maskedTextBox2 = new MaskedTextBox();
 			maskedTextBox3 = new MaskedTextBox();
-			maskedTextBox4 = new MaskedTextBox();
+			textBox1 = new TextBox();
+			textBox2 = new TextBox();
 			SuspendLayout();
 			// 
 			// label4
@@ -76,15 +76,6 @@
 			maskedTextBox1.Size = new Size(127, 23);
 			maskedTextBox1.TabIndex = 1;
 			// 
-			// maskedTextBox2
-			// 
-			maskedTextBox2.Location = new Point(66, 32);
-			maskedTextBox2.Mask = "999999999999";
-			maskedTextBox2.Name = "maskedTextBox2";
-			maskedTextBox2.Size = new Size(127, 23);
-			maskedTextBox2.TabIndex = 2;
-			maskedTextBox2.ValidatingType = typeof(int);
-			// 
 			// maskedTextBox3
 			// 
 			maskedTextBox3.Location = new Point(66, 61);
@@ -92,22 +83,33 @@
 			maskedTextBox3.Size = new Size(127, 23);
 			maskedTextBox3.TabIndex = 3;
 			// 
-			// maskedTextBox4
+			// textBox1
 			// 
-			maskedTextBox4.Location = new Point(66, 90);
-			maskedTextBox4.Mask = "999999999999";
-			maskedTextBox4.Name = "maskedTextBox4";
-			maskedTextBox4.Size = new Size(127, 23);
-			maskedTextBox4.TabIndex = 4;
-			maskedTextBox4.ValidatingType = typeof(int);
+			textBox1.Location = new Point(66, 32);
+			textBox1.MaxLength = 9;
+			textBox1.Name = "textBox1";
+			textBox1.Size = new Size(127, 23);
+			textBox1.TabIndex = 2;
+			textBox1.TextAlign = HorizontalAlignment.Right;
+			textBox1.KeyPress += textBox_KeyPress;
+			// 
+			// textBox2
+			// 
+			textBox2.Location = new Point(66, 90);
+			textBox2.MaxLength = 9;
+			textBox2.Name = "textBox2";
+			textBox2.Size = new Size(127, 23);
+			textBox2.TabIndex = 4;
+			textBox2.TextAlign = HorizontalAlignment.Right;
+			textBox2.KeyPress += textBox_KeyPress;
 			// 
 			// AddMovie
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			Controls.Add(maskedTextBox4);
+			Controls.Add(textBox2);
+			Controls.Add(textBox1);
 			Controls.Add(maskedTextBox3);
-			Controls.Add(maskedTextBox2);
 			Controls.Add(maskedTextBox1);
 			Controls.Add(label4);
 			Controls.Add(label3);
@@ -125,8 +127,8 @@
 		private Label label2;
 		private Label label1;
 		private MaskedTextBox maskedTextBox1;
-		private MaskedTextBox maskedTextBox2;
 		private MaskedTextBox maskedTextBox3;
-		private MaskedTextBox maskedTextBox4;
+		private TextBox textBox1;
+		private TextBox textBox2;
 	}
 }

@@ -19,11 +19,27 @@ namespace CS_Labb4_Affar {
 
 		public List<string> getInfo() {
 			List<string> info = new List<string>() { "Book" };
-			var tb = this.Controls.OfType<MaskedTextBox>().OrderBy(i => i.TabIndex);
+			var tb = this.Controls
+				.OfType<Control>()
+				.Where(c => c is TextBox || c is MaskedTextBox)
+				.OrderBy(i => i.TabIndex);
+
 			foreach (var text in tb) {
-				info.Add(text.Text.ToString());
+				var str = text.Text.ToString();
+				//if (str.Contains('\"'))
+				//	str = str.Replace("\"", "\"\"");
+
+				//if (str.Contains(',') || str.Contains('\n') || str.Contains('\r'))
+				//	str = $"\"{str}\"";
+				info.Add(str);
 			}
 			return info;
+		}
+
+		private void textBox1_KeyPress(object sender, KeyPressEventArgs e) {
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+				e.Handled = true;
+			}
 		}
 	}
 }

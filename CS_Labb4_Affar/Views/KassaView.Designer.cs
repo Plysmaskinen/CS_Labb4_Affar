@@ -26,6 +26,7 @@
 			splitContainer1 = new SplitContainer();
 			KassaInventoryListBox = new ListBox();
 			splitContainer2 = new SplitContainer();
+			KassaHelpButton = new Button();
 			KassaSummaLabel = new Label();
 			KassaPrisLabel = new Label();
 			KorgTillKassaButton = new Button();
@@ -85,6 +86,7 @@
 			// 
 			// splitContainer2.Panel1
 			// 
+			splitContainer2.Panel1.Controls.Add(KassaHelpButton);
 			splitContainer2.Panel1.Controls.Add(KassaSummaLabel);
 			splitContainer2.Panel1.Controls.Add(KassaPrisLabel);
 			splitContainer2.Panel1.Controls.Add(KorgTillKassaButton);
@@ -96,6 +98,18 @@
 			splitContainer2.Size = new Size(524, 422);
 			splitContainer2.SplitterDistance = 264;
 			splitContainer2.TabIndex = 0;
+			// 
+			// KassaHelpButton
+			// 
+			KassaHelpButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			KassaHelpButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+			KassaHelpButton.Location = new Point(238, 397);
+			KassaHelpButton.Name = "KassaHelpButton";
+			KassaHelpButton.Size = new Size(23, 23);
+			KassaHelpButton.TabIndex = 1;
+			KassaHelpButton.Text = "?";
+			KassaHelpButton.UseVisualStyleBackColor = true;
+			KassaHelpButton.Click += KassaHelpButton_Click;
 			// 
 			// KassaSummaLabel
 			// 
@@ -214,5 +228,6 @@
 		private ListBox KassaKorgListBox;
 		private Button KassaTransaktionButton;
 		private ListBox KassaInventoryListBox;
+		private Button KassaHelpButton;
 	}
 }

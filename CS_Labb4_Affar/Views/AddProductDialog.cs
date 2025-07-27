@@ -45,7 +45,6 @@ namespace CS_Labb4_Affar {
 		}
 
 		private void AddProductAcceptButton_Click(object sender, EventArgs e) {
-			// lägg till interface för detta
 			switch (ActiveType) { 
 				case 0: inputs = addBook.getInfo();  break;
 				case 1: inputs = addGame.getInfo(); break;

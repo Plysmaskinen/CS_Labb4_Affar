@@ -16,7 +16,7 @@ namespace CS_Labb4_Affar {
 		LagerController LagerController;
 		List<NumericUpDown> Nuds = new List<NumericUpDown>();
 		Dictionary<int, int> IDAmtPairs = [];
-		public event EventHandler<Dictionary<int, int>> OrderInfo;
+		public event EventHandler<Dictionary<int, int>>? OrderInfo;
 		public OrderProductsDialog(LagerController lagerController) {
 			InitializeComponent();
 			LagerController = lagerController;
@@ -43,7 +43,7 @@ namespace CS_Labb4_Affar {
 					}
 				}
 			}
-			OrderInfo.Invoke(this, IDAmtPairs);
+			OrderInfo?.Invoke(this, IDAmtPairs);
 			Close();
 		}
 

@@ -35,15 +35,18 @@ namespace CS_Labb4_Affar {
 			view.KassaListsLoad += OnLoadKassaLists;
 		}
 
-		private void OnLoadKassaLists(object? sender, EventArgs e) {
+		public void OnLoadKassaLists(object? sender, EventArgs e) {
 			foreach (Book prod in BooksTable) {
-				prods.Add(prod);
+				if (prod.Amount != 0 && !prods.Contains(prod))
+					prods.Add(prod);
 			}
 			foreach (Game prod in GamesTable) {
-				prods.Add(prod);
+				if (prod.Amount != 0 && !prods.Contains(prod))
+					prods.Add(prod);
 			}
 			foreach (Movie prod in MoviesTable) {
-				prods.Add(prod);
+				if (prod.Amount != 0 && !prods.Contains(prod))
+					prods.Add(prod);
 			}
 			KassaAttachList?.Invoke(this, EventArgs.Empty);
 		}
@@ -51,6 +54,14 @@ namespace CS_Labb4_Affar {
 		private void OnProductAdded(object? sender, List<string> e) {
 			string type = e.First();
 			e.Remove(e.First());
+			for(int i = 0; i < e.Count; i++){
+				if (e[i].Contains('\"'))
+					e[i] = e[i].Replace("\"", "\"\"");
+
+				if (e[i].Contains(',') || e[i].Contains('\n') || e[i].Contains('\r'))
+					e[i] = $"\"{e[i]}\"";
+			}
+
 			switch (type){
 				case "Book": BuildBook(e); break;
 				case "Game": BuildGame(e); break;

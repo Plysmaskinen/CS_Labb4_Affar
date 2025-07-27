@@ -27,5 +27,12 @@ namespace CS_Labb4_Affar
 		private void AffarProgramForm_Load(object sender, EventArgs e) {
 			lagerUI.Load();
 		}
+
+		private void tabControl1_Selected(object sender, TabControlEventArgs e) {
+			if (e.TabPage == KassaTab)
+				//kassaUI.Load();
+				return;
+				
+		}
 	}
 }

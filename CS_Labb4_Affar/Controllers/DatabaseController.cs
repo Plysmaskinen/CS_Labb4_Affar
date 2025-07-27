@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CS_Labb4_Affar.Models;
 using static System.Reflection.Metadata.BlobBuilder;
@@ -27,12 +28,8 @@ namespace CS_Labb4_Affar.Controllers {
 		}
 
 		public void ReadDatabase(object? sender, EventArgs e) {
-			//MessageBox.Show("Read");
-			//LagerController.BooksTable = ReadBooks();
 			ReadBooks();
-			//LagerController.GamesTable = ReadGames();
 			ReadGames();
-			//LagerController.MoviesTable = ReadMovies();
 			ReadMovies();
 			UpdateID();
 		}
@@ -61,7 +58,7 @@ namespace CS_Labb4_Affar.Controllers {
 			List<string> rows = ReadLinesFromCSV("books");
 
 			foreach (string row in rows) {
-				string[] columns = row.Split(',');
+				string[] columns = ParseCSVLine(row);
 				Book book = new Book(
 					int.Parse(columns[0]),
 					columns[1],
@@ -76,11 +73,12 @@ namespace CS_Labb4_Affar.Controllers {
 			}
 		}
 
+
 		private void ReadGames() {
 			List<string> rows = ReadLinesFromCSV("games");
 
 			foreach (string row in rows) {
-				string[] columns = row.Split(',');
+				string[] columns = ParseCSVLine(row);
 				Game game = new Game(
 					int.Parse(columns[0]),
 					columns[1],
@@ -96,7 +94,7 @@ namespace CS_Labb4_Affar.Controllers {
 			List<string> rows = ReadLinesFromCSV("movies");
 
 			foreach (string row in rows) {
-				string[] columns = row.Split(',');
+				string[] columns = ParseCSVLine(row);
 				int? runtime = string.IsNullOrEmpty(columns[5]) ? null : int.Parse(columns[5]);
 				Movie movie = new Movie(
 					int.Parse(columns[0]),
@@ -115,7 +113,8 @@ namespace CS_Labb4_Affar.Controllers {
 				GetHeader(typeof(Book))
 			};
 			foreach (Book book in Books) {
-				lines.Add(book.ToString());
+				var str = UnParseCSVLine(book.ToString());
+				lines.Add(str);
 			}
 			WriteLinesToCSV("books", lines);
 		}
@@ -125,7 +124,8 @@ namespace CS_Labb4_Affar.Controllers {
 				GetHeader(typeof(Game))
 			};
 			foreach (Game game in Games) {
-				lines.Add(game.ToString());
+				var str = UnParseCSVLine(game.ToString());
+				lines.Add(str);
 			}
 			WriteLinesToCSV("games", lines);
 		}
@@ -135,7 +135,8 @@ namespace CS_Labb4_Affar.Controllers {
 				GetHeader(typeof(Movie))
 			};
 			foreach (Movie movie in Movies) {
-				lines.Add(movie.ToString());
+				var str = UnParseCSVLine(movie.ToString());
+				lines.Add(str);
 			}
 			WriteLinesToCSV("movies", lines);
 		}
@@ -156,6 +157,21 @@ namespace CS_Labb4_Affar.Controllers {
 			return [];
 		}
 
+		private string[] ParseCSVLine(string row) {
+			var pattern = @",(?=(?:[^""]*""[^""]*"")*[^""]*$)";
+			var columns = Regex.Split(row, pattern);
+
+			for (int i = 0; i < columns.Length; i++) {
+				columns[i] = columns[i].Trim();
+
+				if (columns[i].StartsWith("\"") && columns[i].EndsWith("\"")) {
+					columns[i] = columns[i].Substring(1, columns[i].Length - 2).Replace("\"", "\"\"");
+				}
+			}
+
+			return columns;
+		}
+
 		public void WriteLinesToCSV(string fileName, List<string> lines) {
 			try {
 				File.WriteAllLines(@"..\..\..\CSVDatabase\" + fileName + ".csv", lines);
@@ -163,6 +179,13 @@ namespace CS_Labb4_Affar.Controllers {
 			catch (Exception ex) {
 				MessageBox.Show("Error under skrivningen till CSV: " + ex.Message);
 			}
+		}
+
+		private string UnParseCSVLine(string row) {
+			if (row.Contains("\""))
+				row = row.Replace("\"\"", "\"");
+
+			return row;
 		}
 
 		private string GetHeader(Type type) {

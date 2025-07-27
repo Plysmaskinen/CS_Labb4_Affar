@@ -30,11 +30,11 @@
 			label5 = new Label();
 			label6 = new Label();
 			maskedTextBox1 = new MaskedTextBox();
-			maskedTextBox2 = new MaskedTextBox();
 			maskedTextBox3 = new MaskedTextBox();
 			maskedTextBox4 = new MaskedTextBox();
 			maskedTextBox5 = new MaskedTextBox();
 			maskedTextBox6 = new MaskedTextBox();
+			textBox1 = new TextBox();
 			SuspendLayout();
 			// 
 			// label1
@@ -98,15 +98,6 @@
 			maskedTextBox1.Size = new Size(127, 23);
 			maskedTextBox1.TabIndex = 1;
 			// 
-			// maskedTextBox2
-			// 
-			maskedTextBox2.Location = new Point(65, 33);
-			maskedTextBox2.Mask = "999999999999";
-			maskedTextBox2.Name = "maskedTextBox2";
-			maskedTextBox2.Size = new Size(127, 23);
-			maskedTextBox2.TabIndex = 2;
-			maskedTextBox2.ValidatingType = typeof(int);
-			// 
 			// maskedTextBox3
 			// 
 			maskedTextBox3.Location = new Point(65, 62);
@@ -135,15 +126,25 @@
 			maskedTextBox6.Size = new Size(127, 23);
 			maskedTextBox6.TabIndex = 6;
 			// 
+			// textBox1
+			// 
+			textBox1.Location = new Point(65, 33);
+			textBox1.MaxLength = 9;
+			textBox1.Name = "textBox1";
+			textBox1.Size = new Size(127, 23);
+			textBox1.TabIndex = 2;
+			textBox1.TextAlign = HorizontalAlignment.Right;
+			textBox1.KeyPress += textBox1_KeyPress;
+			// 
 			// AddBook
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
+			Controls.Add(textBox1);
 			Controls.Add(maskedTextBox6);
 			Controls.Add(maskedTextBox5);
 			Controls.Add(maskedTextBox4);
 			Controls.Add(maskedTextBox3);
-			Controls.Add(maskedTextBox2);
 			Controls.Add(maskedTextBox1);
 			Controls.Add(label6);
 			Controls.Add(label5);
@@ -166,10 +167,10 @@
 		private Label label5;
 		private Label label6;
 		private MaskedTextBox maskedTextBox1;
-		private MaskedTextBox maskedTextBox2;
 		private MaskedTextBox maskedTextBox3;
 		private MaskedTextBox maskedTextBox4;
 		private MaskedTextBox maskedTextBox5;
 		private MaskedTextBox maskedTextBox6;
+		private TextBox textBox1;
 	}
 }

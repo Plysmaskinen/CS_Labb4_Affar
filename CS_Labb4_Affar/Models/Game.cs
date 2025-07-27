@@ -7,7 +7,7 @@ using static System.Windows.Forms.DataFormats;
 
 namespace CS_Labb4_Affar.Models {
 	public class Game : Product {
-		public string Platform { get; /*private*/ set; }
+		public string Platform { get; set; }
 		public Game(int id, string name, int price, int amount, string platform) : 
 			   base(id, name, price, amount) {
 			Platform = platform;

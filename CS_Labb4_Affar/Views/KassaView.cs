@@ -15,6 +15,8 @@ namespace CS_Labb4_Affar {
 	public partial class KassaView : UserControl {
 		LagerController LagerController;
 		LagerView LagerView;
+		public event EventHandler? ReadFromFile;
+		public event EventHandler? KassaListsLoad;
 		private BindingList<Product> KassaInventory = [];
 		private BindingList<Product> KassaKorg = [];
 		public KassaView(LagerController lagerController, LagerView lagerView) {
@@ -75,6 +77,7 @@ namespace CS_Labb4_Affar {
 			var prodInKassaInventory = KassaInventory.FirstOrDefault(prod => prod.ID == selected.ID);
 			if (prodInKassaInventory != null) {
 				prodInKassaInventory.Amount++;
+				prodInKassaInventory.Amount++;
 			}
 			else {
 				KassaInventory.Add(new Game(
@@ -116,5 +119,18 @@ namespace CS_Labb4_Affar {
 		private void KassaInventoryListBox_SelectedIndexChanged(object sender, EventArgs e) {
 			KassaTillKorgButton.Enabled = true;
 		}
+
+		private void KassaHelpButton_Click(object sender, EventArgs e) {
+			MessageBox.Show(
+				"Välj en produkt i vänster spalt och klicka på den övre knappen i mitten för att lägga den valda produkten i varukorgen. Välj en produkt i höger spalt och klicka på den nedre knappen i mitten för att lägga tillbaka produkten i lagret. Klicka på knappen under höger spalt för att genomföra transaktionen.", 
+				"Kassahjälp", 
+				MessageBoxButtons.OK
+			);
+		}
+
+		/*public void Load() {
+			ReadFromFile?.Invoke(this, EventArgs.Empty);
+			KassaListsLoad?.Invoke(this, EventArgs.Empty);
+		}*/
 	}
 }

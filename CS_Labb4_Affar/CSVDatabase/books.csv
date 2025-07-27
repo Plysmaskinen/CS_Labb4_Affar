@@ -1,6 +1,6 @@
 ID,Name,Price,Amount,KassaDisp,Author,Genre,Format,Lang
-1,Bello Gallico et Civili,449,2,Julius Caesar,Historia,Inbunden,Latin
+1,Bello Gallico et Civili,449,1,Julius Caesar,Historia,Inbunden,Latin
 2,How to Read a Book,149,1,Mortimer J. Adler,Kursliteratur,Pocket,
-3,Moby Dick,49,2,Herman Melville,Äventyr,Pocket,
-4,The Great Gatsby,79,2,F. Scott Fitzgerald,Noir,E-Bok,
-5,House of Leaves,49,2,Mark Z. Danielewski,Skräck,,
+3,Moby Dick,49,1,Herman Melville,Äventyr,Pocket,
+4,The Great Gatsby,79,1,F. Scott Fitzgerald,Noir,E-Bok,
+5,House of Leaves,49,1,Mark Z. Danielewski,Skräck,,

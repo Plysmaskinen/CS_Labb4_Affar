@@ -9,8 +9,8 @@ namespace CS_Labb4_Affar.Models {
 	public abstract class Product : INotifyPropertyChanged{
 
 		public int ID			{ get; set; }
-		public string Name		{ get; /*private*/ set; }
-		public int Price		{ get; /*private*/ set; }
+		public string Name		{ get; set; }
+		public int Price		{ get; set; }
 
 		private int amount;
 		public int Amount {
@@ -23,6 +23,7 @@ namespace CS_Labb4_Affar.Models {
 				}
 			} 
 		}
+
 		public Product(int id, string name, int price, int amount) {
 			ID = id;
 			Name = name;
