@@ -26,11 +26,6 @@ namespace CS_Labb4_Affar {
 
 			foreach (var text in tb) {
 				var str = text.Text.ToString();
-				//if (str.Contains('\"'))
-				//	str = str.Replace("\"", "\"\"");
-
-				//if (str.Contains(',') || str.Contains('\n') || str.Contains('\r'))
-				//	str = $"\"{str}\"";
 				info.Add(str);
 			}
 			return info;

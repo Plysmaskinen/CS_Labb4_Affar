@@ -54,14 +54,12 @@ namespace CS_Labb4_Affar {
 		private void OnProductAdded(object? sender, List<string> e) {
 			string type = e.First();
 			e.Remove(e.First());
-			for(int i = 0; i < e.Count; i++){
-				if (e[i].Contains('\"'))
+			for (int i = 0; i < e.Count; i++) {
+				if (e[i].Contains(',') || e[i].Contains('\n') || e[i].Contains('\r')) {
 					e[i] = e[i].Replace("\"", "\"\"");
-
-				if (e[i].Contains(',') || e[i].Contains('\n') || e[i].Contains('\r'))
 					e[i] = $"\"{e[i]}\"";
+				}
 			}
-
 			switch (type){
 				case "Book": BuildBook(e); break;
 				case "Game": BuildGame(e); break;

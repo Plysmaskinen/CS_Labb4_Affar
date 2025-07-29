@@ -59,6 +59,11 @@ namespace CS_Labb4_Affar.Controllers {
 
 			foreach (string row in rows) {
 				string[] columns = ParseCSVLine(row);
+
+				for (int i = 0; i < columns.Length; i++) {
+					columns[i] = UnescapeCSV(columns[i]);
+				}
+
 				Book book = new Book(
 					int.Parse(columns[0]),
 					columns[1],
@@ -73,12 +78,16 @@ namespace CS_Labb4_Affar.Controllers {
 			}
 		}
 
-
 		private void ReadGames() {
 			List<string> rows = ReadLinesFromCSV("games");
 
 			foreach (string row in rows) {
 				string[] columns = ParseCSVLine(row);
+
+				for (int i = 0; i < columns.Length; i++) {
+					columns[i] = UnescapeCSV(columns[i]);
+				}
+
 				Game game = new Game(
 					int.Parse(columns[0]),
 					columns[1],
@@ -95,6 +104,11 @@ namespace CS_Labb4_Affar.Controllers {
 
 			foreach (string row in rows) {
 				string[] columns = ParseCSVLine(row);
+
+				for (int i = 0; i < columns.Length; i++) {
+					columns[i] = UnescapeCSV(columns[i]);
+				}
+
 				int? runtime = string.IsNullOrEmpty(columns[5]) ? null : int.Parse(columns[5]);
 				Movie movie = new Movie(
 					int.Parse(columns[0]),
@@ -113,7 +127,16 @@ namespace CS_Labb4_Affar.Controllers {
 				GetHeader(typeof(Book))
 			};
 			foreach (Book book in Books) {
-				var str = UnParseCSVLine(book.ToString());
+				var str = ToCSVLine(
+					book.ID.ToString(),
+					book.Name,
+					book.Price.ToString(),
+					book.Amount.ToString(),
+					book.Author,
+					book.Genre,
+					book.Format ?? "",
+					book.Lang ?? ""
+				);
 				lines.Add(str);
 			}
 			WriteLinesToCSV("books", lines);
@@ -124,7 +147,13 @@ namespace CS_Labb4_Affar.Controllers {
 				GetHeader(typeof(Game))
 			};
 			foreach (Game game in Games) {
-				var str = UnParseCSVLine(game.ToString());
+				var str = ToCSVLine(
+					game.ID.ToString(),
+					game.Name,
+					game.Price.ToString(),
+					game.Amount.ToString(),
+					game.Platform
+				);
 				lines.Add(str);
 			}
 			WriteLinesToCSV("games", lines);
@@ -135,7 +164,14 @@ namespace CS_Labb4_Affar.Controllers {
 				GetHeader(typeof(Movie))
 			};
 			foreach (Movie movie in Movies) {
-				var str = UnParseCSVLine(movie.ToString());
+				var str = ToCSVLine(
+					movie.ID.ToString(),
+					movie.Name,
+					movie.Price.ToString(),
+					movie.Amount.ToString(),
+					movie.Format,
+					movie.Runtime?.ToString() ?? ""
+				);
 				lines.Add(str);
 			}
 			WriteLinesToCSV("movies", lines);
@@ -163,12 +199,7 @@ namespace CS_Labb4_Affar.Controllers {
 
 			for (int i = 0; i < columns.Length; i++) {
 				columns[i] = columns[i].Trim();
-
-				if (columns[i].StartsWith("\"") && columns[i].EndsWith("\"")) {
-					columns[i] = columns[i].Substring(1, columns[i].Length - 2).Replace("\"", "\"\"");
-				}
 			}
-
 			return columns;
 		}
 
@@ -181,11 +212,23 @@ namespace CS_Labb4_Affar.Controllers {
 			}
 		}
 
-		private string UnParseCSVLine(string row) {
-			if (row.Contains("\""))
-				row = row.Replace("\"\"", "\"");
+		private string EscapeCSV(string s) {
+			if (s == null) return "";
+			if (s.Contains(',') || s.Contains('\n') || s.Contains('\r') || s.Contains('"')) {
+				s = s.Replace("\"", "\"\"");
+				return $"\"{s}\"";
+			}
+			return s;
+		}
 
-			return row;
+		private string UnescapeCSV(string s) {
+			if (s.StartsWith("\"") && s.EndsWith("\""))
+				s = s.Substring(1, s.Length - 2).Replace("\"\"", "\"");
+			return s;
+		}
+
+		private string ToCSVLine(params string[] columns) {
+			return string.Join(",", columns.Select(EscapeCSV));
 		}
 
 		private string GetHeader(Type type) {
