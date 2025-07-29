@@ -55,6 +55,7 @@ namespace CS_Labb4_Affar.Controllers {
 		}
 
 		private void ReadBooks() {
+			LagerController.BooksTable.Clear();
 			List<string> rows = ReadLinesFromCSV("books");
 
 			foreach (string row in rows) {
@@ -79,6 +80,7 @@ namespace CS_Labb4_Affar.Controllers {
 		}
 
 		private void ReadGames() {
+			LagerController.GamesTable.Clear();
 			List<string> rows = ReadLinesFromCSV("games");
 
 			foreach (string row in rows) {
@@ -100,6 +102,7 @@ namespace CS_Labb4_Affar.Controllers {
 		}
 
 		private void ReadMovies() {
+			LagerController.MoviesTable.Clear();
 			List<string> rows = ReadLinesFromCSV("movies");
 
 			foreach (string row in rows) {

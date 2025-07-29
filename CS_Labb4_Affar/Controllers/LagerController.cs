@@ -36,6 +36,7 @@ namespace CS_Labb4_Affar {
 		}
 
 		public void OnLoadKassaLists(object? sender, EventArgs e) {
+			prods.Clear();
 			foreach (Book prod in BooksTable) {
 				if (prod.Amount != 0 && !prods.Contains(prod))
 					prods.Add(prod);
@@ -54,12 +55,6 @@ namespace CS_Labb4_Affar {
 		private void OnProductAdded(object? sender, List<string> e) {
 			string type = e.First();
 			e.Remove(e.First());
-			for (int i = 0; i < e.Count; i++) {
-				if (e[i].Contains(',') || e[i].Contains('\n') || e[i].Contains('\r')) {
-					e[i] = e[i].Replace("\"", "\"\"");
-					e[i] = $"\"{e[i]}\"";
-				}
-			}
 			switch (type){
 				case "Book": BuildBook(e); break;
 				case "Game": BuildGame(e); break;

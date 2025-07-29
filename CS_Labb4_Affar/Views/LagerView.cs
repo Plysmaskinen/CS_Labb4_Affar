@@ -42,7 +42,7 @@ namespace CS_Labb4_Affar {
 			AddProductDialog addProductDialog = new AddProductDialog(LagerController);
 			LagerController.AddProdListenerAttach(addProductDialog);
 			addProductDialog.ShowDialog();
-			Save();
+			Reload();
 		}
 
 		private void LagerRemoveProductButton_Click(object sender, EventArgs e) {
@@ -57,15 +57,15 @@ namespace CS_Labb4_Affar {
 					RemoveSelectedProduct(MovieTable, LagerController.MoviesTable);
 					break;
 			}
-			Save();
 			DeselectActiveTable();
+			Reload();
 		}
 
 		private void LagerOrderProductsButton_Click(object sender, EventArgs e) {
 			OrderProductsDialog orderProductsDialog = new OrderProductsDialog(LagerController);
 			LagerController.OrderProdListenerAttach(orderProductsDialog);
 			orderProductsDialog.ShowDialog();
-			Save();
+			Reload();
 		}
 
 		private void LagerHelpButton_Click(object sender, EventArgs e) {
@@ -105,6 +105,11 @@ namespace CS_Labb4_Affar {
 		public void Load() {
 			ReadFromFile?.Invoke(this, EventArgs.Empty);
 			KassaListsLoad?.Invoke(this, EventArgs.Empty);
+		}
+
+		public void Reload() {
+			Save();
+			Load();
 		}
 
 		private void BookTable_SelectionChanged(object sender, EventArgs e) {

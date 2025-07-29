@@ -128,9 +128,5 @@ namespace CS_Labb4_Affar {
 			);
 		}
 
-		/*public void Load() {
-			ReadFromFile?.Invoke(this, EventArgs.Empty);
-			KassaListsLoad?.Invoke(this, EventArgs.Empty);
-		}*/
 	}
 }
