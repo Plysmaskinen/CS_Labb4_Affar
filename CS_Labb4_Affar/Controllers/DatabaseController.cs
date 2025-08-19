@@ -51,7 +51,8 @@ namespace CS_Labb4_Affar.Controllers {
 			foreach (Movie movie in LagerController.MoviesTable) {
 				IDs.Add(movie.ID);
 			}
-			LagerController.nextID = IDs.Max() + 1;
+			if (IDs.Count > 0) 
+				LagerController.nextID = IDs.Max() + 1;
 		}
 
 		private void ReadBooks() {

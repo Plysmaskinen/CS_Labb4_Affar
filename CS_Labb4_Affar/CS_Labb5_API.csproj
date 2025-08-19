@@ -1,0 +1,138 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{549A6751-C19F-FBCF-E907-4AE11235CD22}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>WindowsApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>CS_Labb5_API</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\DatabaseController.cs" />
+    <Compile Include="Controllers\LagerController.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Views\AddBook.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AddBook.Designer.cs">
+      <DependentUpon>AddBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddGame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AddGame.Designer.cs">
+      <DependentUpon>AddGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddMovie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AddMovie.Designer.cs">
+      <DependentUpon>AddMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddProductDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddProductDialog.Designer.cs">
+      <DependentUpon>AddProductDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AffarProgramForm.cs" />
+    <Compile Include="Views\AffarProgramForm.Designer.cs">
+      <DependentUpon>AffarProgramForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KassaView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\KassaView.Designer.cs">
+      <DependentUpon>KassaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LagerView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\LagerView.Designer.cs">
+      <DependentUpon>LagerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderProductsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\OrderProductsDialog.Designer.cs">
+      <DependentUpon>OrderProductsDialog.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CSVDatabase\books.csv" />
+    <None Include="CSVDatabase\games.csv" />
+    <None Include="CSVDatabase\movies.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AddBook.resx">
+      <DependentUpon>AddBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddGame.resx">
+      <DependentUpon>AddGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddMovie.resx">
+      <DependentUpon>AddMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddProductDialog.resx">
+      <DependentUpon>AddProductDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AffarProgramForm.resx">
+      <DependentUpon>AffarProgramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\KassaView.resx">
+      <DependentUpon>KassaView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LagerView.resx">
+      <DependentUpon>LagerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\OrderProductsDialog.resx">
+      <DependentUpon>OrderProductsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".vs\CS_Labb5_API\v17\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

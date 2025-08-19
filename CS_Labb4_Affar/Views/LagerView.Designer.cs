@@ -1,4 +1,7 @@
-﻿namespace CS_Labb4_Affar {
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace CS_Labb4_Affar {
 	partial class LagerView {
 		/// <summary> 
 		/// Required designer variable.
